@@ -81,7 +81,6 @@ public class EndUserSteps extends ScenarioSteps {
 		
 		  	this.pageName = gherkinPageName.toLowerCase();
 			currentPage =  getCurrentPage(pageName);
-			System.out.println("currentPage1 = " + currentPage);
 			currentPage.getElement("page unique element");
 		
         //  Create a step for landing on "Section" and use the following logic
@@ -97,7 +96,6 @@ public class EndUserSteps extends ScenarioSteps {
 			// Loop up the map table for exact section ID based on the section ID (ghetkin) above.
 			
 			currentPage =  getCurrentPage(pageName);
-			System.out.println("currentPage2 = " + currentPage);
 		
 			// get sample elment from the custom markings page
 			System.out.println("The element = " + currentPage.getElement("email", this.sectionID));
