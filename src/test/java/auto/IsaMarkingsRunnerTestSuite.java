@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
 		features={"src/test/resources/features/admin/user_management/user_Login_authentication"}
 		//,tags={" @Creation-Of-Type-Analyst-1"}
 		)
-public class FutureLoginRunnerTestSuite {
+public class IsaMarkingsRunnerTestSuite {
 
 }

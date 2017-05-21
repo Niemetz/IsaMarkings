@@ -1,11 +1,9 @@
 package auto.steps.serenity;
 
-import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 import auto.pages.AmazonBasePageObject;
 import auto.util.TableOfAllPages;
-import cucumber.api.java.en.Then;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -16,12 +14,8 @@ public class EndUserSteps extends ScenarioSteps {
 	AmazonBasePageObject currentPage;
 	
 	// ISA Markings Variables
-	String templateTableName = null;
-	String fieldName = null;
-	String isaMakringObjectAtPageLevel = null;
-	String isaMarking = null;
 	String sectionID ;
-	String TemplatePageID = null;
+
 
 	// This table is used to store all the instance variables for pages under test
 	private static final Map<String, AmazonBasePageObject> allPagesUnderTest = new HashMap<>();
@@ -66,14 +60,14 @@ public class EndUserSteps extends ScenarioSteps {
 	       
 		
 		   clicks_on_elementX(gherkinElement);
-		   
-		   this.templateTableName = "Custom Markings".toLowerCase();
+		   String templateTableName;
+		   String sectionID;
+		   templateTableName = "Custom Markings".toLowerCase();
 	       //System.out.println("Custome Marking Table Name = " + templateTableName);
-	       this.fieldName = fieldName.toLowerCase();
+		   sectionID = fieldName.toLowerCase();
 	       //System.out.println("Custome Marking Field Name = " + this.fieldName);  
-
 	       // Assume that the section (page) for the custom makring field is "custome markings for title"
-	       System.out.println("click on this button => " + this.templateTableName + " for " +  this.fieldName);   
+	       System.out.println("click on this button => " + templateTableName + " for " +  sectionID);   
 
 	}
 	
@@ -93,7 +87,7 @@ public class EndUserSteps extends ScenarioSteps {
 			// get the "custom marking" template.
 			this.sectionID = CustomMakrningsPageNameAndFieldName.split("for")[1].trim().toLowerCase();
 			System.out.println("Section ID = " + ":" + this.sectionID + ":");
-			// Loop up the map table for exact section ID based on the section ID (ghetkin) above.
+			// Look up the map table for exact section ID based on the section ID (ghetkin) above.
 			
 			currentPage =  getCurrentPage(pageName);
 		
@@ -101,8 +95,6 @@ public class EndUserSteps extends ScenarioSteps {
 			System.out.println("The element = " + currentPage.getElement("email", this.sectionID));
 			
 		}
-		
-
 	}
 
 
