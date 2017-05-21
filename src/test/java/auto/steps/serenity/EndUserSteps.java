@@ -16,7 +16,6 @@ public class EndUserSteps extends ScenarioSteps {
 	// ISA Markings Variables
 	String sectionID ;
 
-
 	// This table is used to store all the instance variables for pages under test
 	private static final Map<String, AmazonBasePageObject> allPagesUnderTest = new HashMap<>();
 	
@@ -27,6 +26,7 @@ public class EndUserSteps extends ScenarioSteps {
 		super() ;
 		this.pageName = null;
 		this.currentPage = null;
+		this.sectionID = null;
 	}
 	
 	@Step
@@ -57,8 +57,7 @@ public class EndUserSteps extends ScenarioSteps {
 	
 	// Step for Isa marking
 	public void clicks_on_the_button_by_the_field(String gherkinElement, String fieldName) throws Throwable {
-	       
-		
+
 		   clicks_on_elementX(gherkinElement);
 		   String templateTableName;
 		   String sectionID;
@@ -68,7 +67,6 @@ public class EndUserSteps extends ScenarioSteps {
 	       //System.out.println("Custome Marking Field Name = " + this.fieldName);  
 	       // Assume that the section (page) for the custom makring field is "custome markings for title"
 	       System.out.println("click on this button => " + templateTableName + " for " +  sectionID);   
-
 	}
 	
 	public void lands_on_pageX(String gherkinPageName) throws Throwable {
