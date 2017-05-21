@@ -95,7 +95,7 @@
                 <version>2.18.1</version>
                 <configuration>
                     <includes>
-                        <include>**/FutureLoginRunnerTestSuite.java</include>
+                        <include>**/IsaMarkingsRunnerTestSuite.java</include>
                     </includes>
                     <argLine>-Xmx512m</argLine>
                     <systemPropertyVariables>
