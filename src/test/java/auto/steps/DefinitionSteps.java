@@ -20,9 +20,16 @@ public class DefinitionSteps {
 	}
 
 	// @Step
-	@When("^user clicks on the \"([^\"]*)\" (?:button|radio button|check box|.*?)$")
+	//@When("^user clicks on the \"([^\"]*)\" (?:button|radio button|check box|.*?)$")
+	@When("^user clicks on the \"([^\"]*)\" (?:button|radio button|check box|)$")
 	public void user_clicks_on_elementX(String gherkinElement) throws Throwable {
 		user.clicks_on_elementX(gherkinElement);
+	}
+	
+	// Step for Isa marking
+	@Then("^user clicks on the \"([^\"]*)\" button by the \"([^\"]*)\" field$")
+	public void user_clicks_on_the_button_by_the_field(String gherkinElement, String fieldName) throws Throwable {
+		user.clicks_on_the_button_by_the_field(gherkinElement, fieldName);
 	}
 
 	// @Step
@@ -35,5 +42,10 @@ public class DefinitionSteps {
 	public void user_enters_inputX_into_the_elementY_input_field(String inputValue, String gherkinElement)
 			throws Throwable {
 		user.enters_inputX_into_the_elementY_input_field(inputValue, gherkinElement);
+	}
+	@Step
+	@Then("^user verifies that all expected elelments are displayed on the page$")
+	public void user_verifies_that_all_expected_elelments_are_displayed_on_the_page() throws Throwable {
+		user.verifyThatAllExpectedElementsAreDisplayedOnPage();
 	}
 }

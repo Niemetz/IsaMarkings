@@ -24,6 +24,13 @@ public class AmazonBasePageObject extends PageObject
 	{
 		return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();
     }
+	// Get a single element on the page based on the sectionID
+	public String getElement(String gherkinElement, String sectionID) 
+	{
+        // Change the return type WebElementFacade and wrap around with jquery $()
+		// return $(mapTable.get(gherkinElement).replaceAll("&objectID&",sectionID));
+		return mapTable.get(gherkinElement).replaceAll("&objectID&",sectionID);
+    }
 
 	@Step("I am at the  AmazonPbasePageObject class")
 	public void verifyThatAllExpectedElementsAreDisplayedOnPage(String pageName) 

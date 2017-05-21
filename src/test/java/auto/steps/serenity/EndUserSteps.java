@@ -1,9 +1,11 @@
 package auto.steps.serenity;
 
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 import auto.pages.AmazonBasePageObject;
 import auto.util.TableOfAllPages;
+import cucumber.api.java.en.Then;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -12,6 +14,14 @@ public class EndUserSteps extends ScenarioSteps {
 
 	String pageName;
 	AmazonBasePageObject currentPage;
+	
+	// ISA Markings Variables
+	String templateTableName = null;
+	String fieldName = null;
+	String isaMakringObjectAtPageLevel = null;
+	String isaMarking = null;
+	String sectionID ;
+	String TemplatePageID = null;
 
 	// This table is used to store all the instance variables for pages under test
 	private static final Map<String, AmazonBasePageObject> allPagesUnderTest = new HashMap<>();
@@ -37,10 +47,10 @@ public class EndUserSteps extends ScenarioSteps {
 		// if the desired page was not registered in the allPageUnderTest, 
 		// then add the desired page to the allPageUnderTest.
 		this.pageName = gherkinPageName.toLowerCase();
-		if (!allPagesUnderTest.containsKey(pageName)) 
+		if (!allPagesUnderTest.containsKey(this.pageName)) 
 		{
 		    @SuppressWarnings("rawtypes")
-		    Class targetPageClass = (Class) tableOfAllPages.getClass(pageName);
+		    Class targetPageClass = (Class) tableOfAllPages.getClass(this.pageName);
 			allPagesUnderTest.put(new String(pageName),  (AmazonBasePageObject) getPages().get(targetPageClass));
 		}
 		// return the desired page to the caller
@@ -50,12 +60,53 @@ public class EndUserSteps extends ScenarioSteps {
 	public void clicks_on_elementX(String gherkinElement) throws Throwable {
 		currentPage.getElement(gherkinElement).waitUntilVisible().and().waitUntilClickable().click();
 	}
+	
+	// Step for Isa marking
+	public void clicks_on_the_button_by_the_field(String gherkinElement, String fieldName) throws Throwable {
+	       
+		
+		   clicks_on_elementX(gherkinElement);
+		   
+		   this.templateTableName = "Custom Markings".toLowerCase();
+	       //System.out.println("Custome Marking Table Name = " + templateTableName);
+	       this.fieldName = fieldName.toLowerCase();
+	       //System.out.println("Custome Marking Field Name = " + this.fieldName);  
 
-	public void lands_on_pageX(String gherkinPageName) throws Throwable {
-		this.pageName = gherkinPageName.toLowerCase();
-		currentPage =  getCurrentPage(pageName);
-		currentPage.getElement("page unique element");
+	       // Assume that the section (page) for the custom makring field is "custome markings for title"
+	       System.out.println("click on this button => " + this.templateTableName + " for " +  this.fieldName);   
+
 	}
+	
+	public void lands_on_pageX(String gherkinPageName) throws Throwable {
+		
+		  	this.pageName = gherkinPageName.toLowerCase();
+			currentPage =  getCurrentPage(pageName);
+			System.out.println("currentPage1 = " + currentPage);
+			currentPage.getElement("page unique element");
+		
+        //  Create a step for landing on "Section" and use the following logic
+	    // CustomMakrningsPageNameAndFieldName is the section string passed down by Gherkin
+		String CustomMakrningsPageNameAndFieldName = "Custom Markings for Title ";
+		if(CustomMakrningsPageNameAndFieldName.contains("Custom") && gherkinPageName.equalsIgnoreCase("Login") )
+		{
+			this.pageName = CustomMakrningsPageNameAndFieldName.split("for")[0].trim().toLowerCase() ;
+			System.out.println("Page ID    = " + ":" + this.pageName + ":");
+			// get the "custom marking" template.
+			this.sectionID = CustomMakrningsPageNameAndFieldName.split("for")[1].trim().toLowerCase();
+			System.out.println("Section ID = " + ":" + this.sectionID + ":");
+			// Loop up the map table for exact section ID based on the section ID (ghetkin) above.
+			
+			currentPage =  getCurrentPage(pageName);
+			System.out.println("currentPage2 = " + currentPage);
+		
+			// get sample elment from the custom markings page
+			System.out.println("The element = " + currentPage.getElement("email", this.sectionID));
+			
+		}
+		
+
+	}
+
 
 	public void enters_inputX_into_the_elementY_input_field(String gherkinInputValue, String gherkinElement) throws Throwable {
 		currentPage.getElement(gherkinElement).waitUntilVisible().and().waitUntilEnabled().sendKeys(gherkinInputValue);

@@ -3,6 +3,8 @@ package auto.util;
 import net.thucydides.core.steps.ScenarioSteps;
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 @SuppressWarnings("serial")
 public class TableOfAllPages extends ScenarioSteps {
@@ -15,11 +17,13 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("login", "auto.pages.LoginPage");
 		appPages.put("account main", "auto.pages.AccountMainPage");
 		appPages.put("your account", "auto.pages.YourAccountPage");
+		appPages.put("custom markings", "auto.pages.CustomMarkingsPage");
 	}
 
 	@SuppressWarnings("rawtypes")
 	public Class getClass(String pageName) throws ClassNotFoundException {
 		return  Class.forName(appPages.get(pageName));
 	}
+	
 
 }
