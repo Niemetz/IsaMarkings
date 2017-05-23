@@ -27,7 +27,7 @@ public class AmazonBasePageObject extends PageObject
 	// Get a single element on the page based on the sectionID
 	public WebElementFacade getElement(String gherkinElement, String objectID) 
 	{
-		if(!objectID.equalsIgnoreCase("main"))
+		if(objectID.equalsIgnoreCase("main"))
 		   return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();	
 		
 	     return $(mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID)).waitUntilPresent().and().waitUntilVisible();
