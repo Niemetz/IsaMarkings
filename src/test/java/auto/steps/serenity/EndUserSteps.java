@@ -2,8 +2,11 @@ package auto.steps.serenity;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.jruby.RubyProcess.Sys;
+
 import auto.pages.AmazonBasePageObject;
-import auto.util.TableOfAllPages;
+import auto.util.*;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -15,18 +18,21 @@ public class EndUserSteps extends ScenarioSteps {
 	
 	// ISA Markings Variables
 	String sectionID ;
+	String objectID;
 
 	// This table is used to store all the instance variables for pages under test
 	private static final Map<String, AmazonBasePageObject> allPagesUnderTest = new HashMap<>();
 	
 	// This table contains all pages of the app
 	TableOfAllPages tableOfAllPages = new TableOfAllPages();
+	TableofIsaObjects tableofIsaObjects = new TableofIsaObjects();
 
 	public EndUserSteps() {
 		super() ;
 		this.pageName = null;
 		this.currentPage = null;
 		this.sectionID = null;
+		this.objectID = null;
 	}
 	
 	@Step
@@ -69,6 +75,7 @@ public class EndUserSteps extends ScenarioSteps {
 	       System.out.println("click on this button => " + templateTableName + " for " +  sectionID);   
 	}
 	
+	// Create a step definition for "And User lands on the "ISA Custom Markings for Title field" section
 	public void lands_on_pageX(String gherkinPageName) throws Throwable {
 		
 		  	this.pageName = gherkinPageName.toLowerCase();
@@ -76,21 +83,36 @@ public class EndUserSteps extends ScenarioSteps {
 			currentPage.getElement("page unique element");
 		
         //  Create a step for landing on "Section" and use the following logic
-	    // CustomMakrningsPageNameAndFieldName is the section string passed down by Gherkin
-		String CustomMakrningsPageNameAndFieldName = "Custom Markings for Title ";
-		if(CustomMakrningsPageNameAndFieldName.contains("Custom") && gherkinPageName.equalsIgnoreCase("Login") )
+	    // gherkinPageName2 is the section string passed down by Gherkin
+		String gherkinPageName2 = "ISA Custom Markings for Package";
+		System.out.println("====================================");
+		System.out.println("gherkinPageName = " + gherkinPageName2);
+		if(gherkinPageName2.contains("ISA Custom Markings") && gherkinPageName.equalsIgnoreCase("Login") )
 		{
-			this.pageName = CustomMakrningsPageNameAndFieldName.split("for")[0].trim().toLowerCase() ;
-			System.out.println("Page ID    = " + ":" + this.pageName + ":");
-			// get the "custom marking" template.
-			this.sectionID = CustomMakrningsPageNameAndFieldName.split("for")[1].trim().toLowerCase();
-			System.out.println("Section ID = " + ":" + this.sectionID + ":");
-			// Look up the map table for exact section ID based on the section ID (ghetkin) above.
-			
-			currentPage =  getCurrentPage(pageName);
-		
-			// get sample elment from the custom markings page
-			System.out.println("The element = " + currentPage.getElement("email", this.sectionID));
+			if(gherkinPageName2.contains("field"))  // field level
+			{
+				// get the field name
+				this.objectID = gherkinPageName2.split("for")[1].trim().split("field")[0].trim();
+				// Set the page to "ISA Custom Markings for X field "
+				gherkinPageName = gherkinPageName2.replace(this.objectID, "X");
+				System.out.println("The page to be called = " + gherkinPageName.toLowerCase());
+				// get the actual objectID
+				this.objectID = tableofIsaObjects.getActualObjectID(this.objectID.toLowerCase());
+				System.out.println("ObjectID = " + this.objectID);
+			}
+			else // Page level
+			{
+				// get the page level
+				this.objectID = gherkinPageName2.split("for")[1].trim();
+				// Set the page to "ISA Custom Markings for X"
+				gherkinPageName = gherkinPageName2.replace(this.objectID, "X");
+				System.out.println("The page to be called = " + gherkinPageName.toLowerCase());
+				// get the actual objectID
+				this.objectID = tableofIsaObjects.getActualObjectID(this.objectID.toLowerCase());
+				System.out.println("ObjectID = " + this.objectID);
+			}
+
+			currentPage =  getCurrentPage(gherkinPageName.toLowerCase());
 			
 		}
 	}

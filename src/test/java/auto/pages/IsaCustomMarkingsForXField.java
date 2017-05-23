@@ -1,12 +1,12 @@
 package auto.pages;
 
-public class CustomMarkingsPage extends AmazonBasePageObject {
-	public CustomMarkingsPage()
+public class IsaCustomMarkingsForXField extends AmazonBasePageObject {
+	public IsaCustomMarkingsForXField()
 	{
 		mapTable.clear();
-		mapTable.put("Sign in".toLowerCase(), "#signInSubmit&objectID&");
-		mapTable.put("Email".toLowerCase(), "#ap_email&objectID&");
-		mapTable.put("Password".toLowerCase(), "#ap_password&objectID&");
-		mapTable.put("Page Unique Element".toLowerCase(), "#signInSubmit&objectID&");
+		mapTable.put("Sign in".toLowerCase(), "#FIELDsignInSubmit&objectID&");
+		mapTable.put("Email".toLowerCase(), "#FIELDsignInSubmitap_email&objectID&");
+		mapTable.put("Password".toLowerCase(), "FIELDsignInSubmit#ap_password&objectID&");
+		mapTable.put("Page Unique Element".toLowerCase(), "FIELDsignInSubmit#signInSubmit&objectID&");
 	}
 }
