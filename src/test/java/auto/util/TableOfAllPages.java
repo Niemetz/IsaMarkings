@@ -19,6 +19,8 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("your account", "auto.pages.YourAccountPage");
 		appPages.put("isa custom markings for x field", "auto.pages.IsaCustomMarkingsForXField");
 		appPages.put("isa custom markings for x", "auto.pages.IsaCustomMarkingsForX");
+		appPages.put("control set for x field", "auto.pages.ControlSetForXField");
+		appPages.put("control set for x", "auto.pages.ControlSetForX");
 	}
 
 	@SuppressWarnings("rawtypes")
