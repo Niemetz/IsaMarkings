@@ -85,9 +85,10 @@ public class EndUserSteps extends ScenarioSteps {
 			
 	    // Copy this block to real EndUserStep
 		///////////////////////////////////////////////////////////////////////
-		// Two Gherkin Statements can use this method: 
+		// Three Gherkin Statements can use this method: 
 	    // 1 - Then user lands on the "X" section
 		// 2 - Then user should see the "X" section
+	    // 3 - Given user is at the "X" section
 		
 	    // Test Data to test this block of code
 		//String gherkinpageID2 = "ISA Markings for Title field";
