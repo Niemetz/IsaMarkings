@@ -4,10 +4,10 @@ public class ControlSetForXField extends AmazonBasePageObject {
 	public ControlSetForXField()
 	{
 		mapTable.clear();
-		System.out.println("I am in the ControlSetForXField");
-		mapTable.put("Sign in".toLowerCase(), "CONTROLSETFORXFIELD#signInSubmit&objectID&");
-		mapTable.put("Email".toLowerCase(), "CONTROLSETFORXFIELD#ap_email&objectID&");
-		mapTable.put("Password".toLowerCase(), "CONTROLSETFORXFIELD#ap_password&objectID&");
-		mapTable.put("Page Unique Element".toLowerCase(), "CONTROLSETFORXFIELD#signInSubmit&objectID&");
+		System.out.println("I am in the class => ControlSetForXField");
+		mapTable.put("Sign in".toLowerCase(), "Control Set For &objectID& Field - #signInSubmit");
+		mapTable.put("Email".toLowerCase(), "Control Set For &objectID& Field - #ap_email");
+		mapTable.put("Password".toLowerCase(), "Control Set For &objectID& Field - #ap_password");
+		mapTable.put("Page Unique Element".toLowerCase(), "Control Set For &objectID& Field - #signInSubmit");
 	}
 }

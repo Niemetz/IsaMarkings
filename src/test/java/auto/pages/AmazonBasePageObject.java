@@ -20,18 +20,19 @@ public class AmazonBasePageObject extends PageObject
     }
 
 	// Get a single element on the page
-	public WebElementFacade getElement(String gherkinElement) 
+	public String getElement(String gherkinElement) 
 	{
-		return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();
+		//return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();
+		return mapTable.get(gherkinElement.toLowerCase());
     }
 	// Get a single element on the page based on the sectionID
-	public WebElementFacade getElement(String gherkinElement, String objectID) 
+	public String getElement(String gherkinElement, String objectID) 
 	{
-		if(objectID.equalsIgnoreCase("main"))
-		   return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();	
-		
-	     return $(mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID)).waitUntilPresent().and().waitUntilVisible();
-
+//		if(objectID.equalsIgnoreCase("main"))
+//		   return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();	
+//		
+//	     return $(mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID)).waitUntilPresent().and().waitUntilVisible();
+	     return mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID);
     }
 
 	@Step("I am at the  AmazonPbasePageObject class")
@@ -65,3 +66,4 @@ public class AmazonBasePageObject extends PageObject
 		System.out.println("  ============================================");
 	}
 }
+

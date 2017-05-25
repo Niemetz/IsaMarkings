@@ -17,10 +17,11 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("login", "auto.pages.LoginPage");
 		appPages.put("account main", "auto.pages.AccountMainPage");
 		appPages.put("your account", "auto.pages.YourAccountPage");
-		appPages.put("isa custom markings for x field", "auto.pages.IsaCustomMarkingsForXField");
-		appPages.put("isa custom markings for x", "auto.pages.IsaCustomMarkingsForX");
+		appPages.put("isa markings for x field", "auto.pages.IsaMarkingsForXField");
+		appPages.put("isa markings for x", "auto.pages.IsaMarkingsForX");
 		appPages.put("control set for x field", "auto.pages.ControlSetForXField");
 		appPages.put("control set for x", "auto.pages.ControlSetForX");
+		appPages.put("affiliation", "auto.pages.Affiliation");
 	}
 
 	@SuppressWarnings("rawtypes")
