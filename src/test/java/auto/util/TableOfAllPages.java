@@ -21,7 +21,11 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("isa markings for x", "auto.pages.IsaMarkingsForX");
 		appPages.put("control set for x field", "auto.pages.ControlSetForXField");
 		appPages.put("control set for x", "auto.pages.ControlSetForX");
-		appPages.put("affiliation", "auto.pages.Affiliation");
+		appPages.put("policies for x field", "auto.pages.PoliciesForXField");
+		appPages.put("policies for x", "auto.pages.PoliciesForX");
+		appPages.put("further sharing for x field", "auto.pages.FurtherSharingForXField");
+		appPages.put("further sharing for x", "auto.pages.FurtherSharingForX");
+		appPages.put("new indicator", "auto.pages.NewIndicatorPage");
 	}
 
 	@SuppressWarnings("rawtypes")
