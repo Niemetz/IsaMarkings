@@ -38,14 +38,9 @@ public class DefinitionSteps {
 		user.lands_on_pageX(gherkinPageName.toLowerCase());
 	}
 
-//	@When("^user enters \"([^\"]*)\" into the \"([^\"]*)\" input field$")
-//	public void user_enters_inputX_into_the_elementY_input_field(String inputValue, String gherkinElement)
-//			throws Throwable {
-//		user.enters_inputX_into_the_elementY_input_field(inputValue, gherkinElement);
-//	}
-//	@Step
-//	@Then("^user verifies that all expected elelments are displayed on the page$")
-//	public void user_verifies_that_all_expected_elelments_are_displayed_on_the_page() throws Throwable {
-//		user.verifyThatAllExpectedElementsAreDisplayedOnPage();
-//	}
+	@Then("^user lands on the \"([^\"]*)\" section$")
+	public void user_lands_on_the_section(String gherkinSectionID) throws Throwable 
+	{
+        user.lands_on_the_section(gherkinSectionID);
+	}
 }

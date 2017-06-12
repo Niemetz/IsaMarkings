@@ -8,9 +8,10 @@ Feature: Requirement ID = 80.3 I AM FUTURE ENHANCEMENT ....An Amazon existing us
 @Amazon-User-Login-Authentication
 Scenario: Amazon User Login Authentication
     Given user navigates to Amazon "Home" website
-    Then user lands on the "Home" page
+    Then user lands on the "New Indicator" page
     When user clicks on the "Custom ISA Markings" button by the "Title" field
-
+    Then user lands on the "ISA Markings for Title field" section
+    
   #  Then user lands on the "Login" page
     #And  user verifies that all expected elelments are displayed on the page
     #When user clicks on the "Sign in securely" button
