@@ -8,6 +8,6 @@ public class FurtherSharingForX extends AmazonBasePageObject {
 		mapTable.put("Sign in".toLowerCase(), "//Further/Sharing/ForX/&objectID&-#signInSubmit");
 		mapTable.put("Email".toLowerCase(), "///Further/Sharing/ForX/&objectID&-#ap_email");
 		mapTable.put("Password".toLowerCase(), "///Further/Sharing/ForX/&objectID&-#ap_password");
-		mapTable.put("Page Unique Element".toLowerCase(), "//Further/Sharing/ForX/&objectID&-#signInSubmit");
+		mapTable.put("Page Unique Element".toLowerCase(), "//Further/Sharing/ForX/&objectID&/Page Unique Element");
 	}
 }

@@ -38,9 +38,23 @@ public class DefinitionSteps {
 		user.lands_on_pageX(gherkinPageName.toLowerCase());
 	}
 
-	@Then("^user lands on the \"([^\"]*)\" section$")
+	@Then("^user (?:lands on the|is at the|.*?) \"([^\"]*)\" section$")
+	//@Given("^user is at the \"([^\"]*)\" section$")
 	public void user_lands_on_the_section(String gherkinSectionID) throws Throwable 
 	{
         user.lands_on_the_section(gherkinSectionID);
+	}
+	
+//	@Given("^user is at the \"([^\"]*)\" section$")
+//	public void user_is_at_the_section(String arg1) throws Throwable {
+//	    // Write code here that turns the phrase above into concrete actions
+//	    throw new PendingException();
+//	}
+	
+	
+	@When("^user clicks on the \"([^\"]*)\" section link$")
+	public void user_clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
+	{
+          user.clicks_on_the_section_link(gherkinSectionLinkID);
 	}
 }

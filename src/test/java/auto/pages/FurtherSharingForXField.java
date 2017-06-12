@@ -5,9 +5,9 @@ public class FurtherSharingForXField extends AmazonBasePageObject {
 	{
 		mapTable.clear();
 		System.out.println("I am in the class => FurtherSharingForXField");
-		mapTable.put("Sign in".toLowerCase(), "//Further/Sharing/ForXField/&objectID&-#signInSubmit");
-		mapTable.put("Email".toLowerCase(), "//Further/Sharing/ForXField/&objectID&-#ap_email");
-		mapTable.put("Password".toLowerCase(), "//Further/Sharing/ForXField/&objectID&-#ap_password");
-		mapTable.put("Page Unique Element".toLowerCase(), "//Further/Sharing/ForXField/&objectID&-#signInSubmit");
+		mapTable.put("Sign in".toLowerCase(), "//ISA Marking/ForField/&objectID&/Further Sharing/-#signInSubmit");
+		mapTable.put("Email".toLowerCase(), "//ISA Marking/ForField/&objectID&/Further Sharing/-#ap_email");
+		mapTable.put("Password".toLowerCase(), "//ISA Marking/ForField/&objectID&/Further Sharing/-#ap_password");
+		mapTable.put("Page Unique Element".toLowerCase(), "//ISA Marking/For Field/&objectID&/Further Sharing/Page Unique Element");
 	}
 }

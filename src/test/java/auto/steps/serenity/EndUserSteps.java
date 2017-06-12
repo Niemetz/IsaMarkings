@@ -125,19 +125,31 @@ public void lands_on_the_section(String gherkinSectionID) throws Throwable
 			// Get the page
 			currentPage =  getCurrentPage(pageID.toLowerCase());
 			// Print a sample field
-			System.out.println("Element \"policies\"  = " + currentPage.getElement("policies", objectID));
+			System.out.println("Page Unique Element  = " + currentPage.getElement("Page Unique Element".toLowerCase(), objectID));
+			System.out.println("=============================================");
 		}
 	}
 	else
 	{
-//		// set sectionID to "Main"
-//		sectionID = "Main";
-//		// set objectID to "Main"
-//		objectID = "Main";
-//	    // Get the page
-		System.out.println("User lands on page  = " + gherkinSectionID);
-		System.out.println("Page Unique Element = " + getCurrentPage(gherkinSectionID.toLowerCase()).getElement(gherkinSectionID.toLowerCase()));
-	    //getCurrentPage(gherkinPageID.toLowerCase()).getElement(gherkinPageID.toLowerCase());
+		// identify the pageID by splitting the sebSectonLinkID
+		String[] pageIdArray = gherkinSectionID.split("\\.");
+		
+	    // get the objectID
+		objectID = gherkinSectionID.split("\\.")[0].trim().toLowerCase();
+		
+		// get the elementID
+        elementID = pageIdArray[pageIdArray.length - 1].trim();
+        
+        // get the page
+        if(objectTypeIdentification.objectTypeIs(objectID).equalsIgnoreCase("field"))
+           pageID = elementID.toLowerCase() + " for x field";
+        else if(objectTypeIdentification.objectTypeIs(objectID).equalsIgnoreCase("object"))
+        	pageID = elementID.toLowerCase() + " for x";
+
+		System.out.println("User lands on section  = " + elementID);
+		System.out.println("Page Unique Element = " + getCurrentPage(pageID.toLowerCase()).getElement("Page Unique Element".toLowerCase(), objectID.toLowerCase()));
+		System.out.println("=============================================");
+
 	}	
 }
 
@@ -154,70 +166,19 @@ public void lands_on_pageX(String gherkinPageID) throws Throwable
 	// 1 - When user clicks on the "SectionID.subSectionID" 
     // For Exmaple: When user clicks on the "Title.Policies" link.
 
-	public void clicks_on_the_subsection_link(String subSectionLinkID) throws ClassNotFoundException 
+	public void clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
 	{
 		// identify the pageID by splitting the sebSectonLinkID
-		String[] pageIdArray = subSectionLinkID.split("\\.");
+		String[] pageIdArray = gherkinSectionLinkID.split("\\.");
 		
 	    // get the objectID
-		objectID = pageIdArray[0].trim().toLowerCase();
+		objectID = gherkinSectionLinkID.split("\\.")[0].trim().toLowerCase();
 
 		// get the elementID
-        elementID = pageIdArray[pageIdArray.length-1].trim();
+        elementID = pageIdArray[pageIdArray.length - 1].trim();
+        System.out.println("user clicks on the " + gherkinSectionLinkID + " section link");
 	    System.out.println("Element to be clicked = " + currentPage.getElement(elementID, objectID.toLowerCase()));
-	    
-
-		
-		
-//		if(subSectionLinkID.contains("ISA Markings for"))
-//		{
-//			if(subSectionLinkID.contains("field"))  // field level
-//			{
-//				// get objectID
-//				objectID = subSectionLinkID.split("for")[1].trim().split("field")[0].trim();
-//
-//				// Set the sectionID
-//				sectionID = sectionID + "." + subSectionLinkID;
-//				System.out.println("sectionID = " + sectionID);
-//
-//				// Set the pageID
-//				pageID = subSectionLinkID.toLowerCase() + " for x field".toLowerCase();
-//				System.out.println("pageID = " + pageID);
-//
-//				// get the actual objectID
-//				objectID = tableofIsaObjects.getActualObjectID(objectID.toLowerCase());
-//				System.out.println("objectID = " + objectID);
-//
-//				// Get the page
-//				currentPage =  getCurrentPage(pageID.toLowerCase());
-//				
-//				// Print a sample field
-//				System.out.println("Elelment \"Sign in\"  = " + currentPage.getElement("Sign in", objectID));
-//			}
-//			else if(!subSectionLinkID.contains("field")) // Page level
-//			{
-//				// get the objectID
-//				objectID = subSectionLinkID.split("for")[1].trim();
-//
-//				// Set the sectionID
-//				sectionID = sectionID + "." + subSectionLinkID;
-//				System.out.println("sectionID = " + sectionID);
-//
-//				// Set the page to "ISA Markings for X"
-//				pageID = subSectionLinkID + " for X";
-//				System.out.println("pageID = " + pageID.toLowerCase());
-//
-//				// get the actual objectID
-//				objectID = tableofIsaObjects.getActualObjectID(objectID.toLowerCase());
-//				System.out.println("objectID = " + objectID);
-//
-//				// Get the page
-//				currentPage =  getCurrentPage(pageID.toLowerCase());
-//				// Print a sample field
-//				System.out.println("Elelment \"Sign in\"  = " + currentPage.getElement("Sign in", objectID));
-//			}
-//		}
-//		///////////////////////////////////////////////////////////////	 
+	    System.out.println("=============================================");
 	}
 	
 }
