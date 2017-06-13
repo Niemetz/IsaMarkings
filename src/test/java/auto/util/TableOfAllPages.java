@@ -26,12 +26,11 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("further sharing for x field", "auto.pages.FurtherSharingForXField");
 		appPages.put("further sharing for x", "auto.pages.FurtherSharingForX");
 		appPages.put("new indicator", "auto.pages.NewIndicatorPage");
+		appPages.put("indicator.main", "auto.pages.IndicatorMain");
 	}
 
 	@SuppressWarnings("rawtypes")
 	public Class getClass(String pageName) throws ClassNotFoundException {
 		return  Class.forName(appPages.get(pageName));
 	}
-	
-
 }

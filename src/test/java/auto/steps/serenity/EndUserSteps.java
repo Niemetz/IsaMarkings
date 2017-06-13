@@ -28,9 +28,6 @@ public class EndUserSteps extends ScenarioSteps {
 	// This table contains all pages of the app
 	TableOfAllPages tableOfAllPages = new TableOfAllPages();
 	TableofIsaObjects tableofIsaObjects = new TableofIsaObjects();
-	ObjectTypeIdentification objectTypeIdentification = new ObjectTypeIdentification();
-	
-
 
 	public EndUserSteps() {
 		super() ;
@@ -80,77 +77,66 @@ public void lands_on_the_section(String gherkinSectionID) throws Throwable
 {
 	if(gherkinSectionID.contains("ISA Markings for"))
 	{
-		if(gherkinSectionID.contains("field"))  // field level
-		{
-			// get objectID
-			objectID = gherkinSectionID.split("for")[1].trim().split("field")[0].trim();
+		// get the sectionID
+		sectionID = gherkinSectionID.split("for")[1].trim().split("field")[0].trim();
+		
+		// get the objectID
+		objectID = tableofIsaObjects.getObjectID(sectionID);
+		
+		// get the pageID
+		if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("field"))
+			pageID = "isa markings for x field";
+		else if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("object"))
+			pageID = "isa markings for x";
 
-			// Set the sectionID
-			sectionID = objectID;
-			System.out.println("sectionID = " + sectionID);
-			
-			// Set the pageID
-			pageID = "ISA Markings for X field";
-			System.out.println("pageID = " + pageID);
 
-			// get the actual objectID
-			objectID = tableofIsaObjects.getActualObjectID(objectID.toLowerCase());
-			System.out.println("objectID = " + objectID);
-
-			// Get the page
-			currentPage =  getCurrentPage(pageID.toLowerCase());
-			
-			// Print a sample field
-			System.out.println("User lands on section = " + gherkinSectionID);
-			System.out.println("Page Unique Element = " + currentPage.getElement("Page Unique Element".toLowerCase(), objectID));
-			System.out.println("=============================================");
-		}
-		else if(!gherkinSectionID.contains("field")) // Page level
-		{
-			// get the objectID
-			objectID = gherkinSectionID.split("for")[1].trim();
-			
-			// Set the sectionID
-			sectionID = objectID;
-			System.out.println("sectionID = " + sectionID);
-
-			// Set the page to "ISA Markings for X"
-			pageID = "ISA Markings for X";
-			System.out.println("pageID = " + pageID.toLowerCase());
-
-			// get the actual objectID
-			objectID = tableofIsaObjects.getActualObjectID(objectID.toLowerCase());
-			System.out.println("objectID = " + objectID);
-
-			// Get the page
-			currentPage =  getCurrentPage(pageID.toLowerCase());
-			// Print a sample field
-			System.out.println("Page Unique Element  = " + currentPage.getElement("Page Unique Element".toLowerCase(), objectID));
-			System.out.println("=============================================");
-		}
-	}
-	else
+		// Get the page
+		currentPage =  getCurrentPage(pageID.toLowerCase());
+		
+		System.out.println("User lands on section = " + sectionID);
+		System.out.println("Page Unique Element = " + currentPage.getElement("Page Unique Element".toLowerCase(), objectID.toLowerCase()));
+		System.out.println("=============================================");
+	}	
+	else if(gherkinSectionID.contains(".") && !gherkinSectionID.contains("Main"))
 	{
 		// identify the pageID by splitting the sebSectonLinkID
 		String[] pageIdArray = gherkinSectionID.split("\\.");
 		
 	    // get the objectID
-		objectID = gherkinSectionID.split("\\.")[0].trim().toLowerCase();
+		objectID = tableofIsaObjects.getObjectID(pageIdArray[0].trim().toLowerCase());
 		
-		// get the elementID
-        elementID = pageIdArray[pageIdArray.length - 1].trim();
-        
-        // get the page
-        if(objectTypeIdentification.objectTypeIs(objectID).equalsIgnoreCase("field"))
-           pageID = elementID.toLowerCase() + " for x field";
-        else if(objectTypeIdentification.objectTypeIs(objectID).equalsIgnoreCase("object"))
-        	pageID = elementID.toLowerCase() + " for x";
-
-		System.out.println("User lands on section  = " + elementID);
-		System.out.println("Page Unique Element = " + getCurrentPage(pageID.toLowerCase()).getElement("Page Unique Element".toLowerCase(), objectID.toLowerCase()));
+		// get the pageID
+		String objectType = tableofIsaObjects.getObjecType(pageIdArray[0].trim().toLowerCase());
+		if(objectType.equalsIgnoreCase("field"))
+			pageID = pageIdArray[pageIdArray.length - 1].trim().toLowerCase() + " for x field";
+		else if(objectType.equalsIgnoreCase("object"))
+			pageID = pageIdArray[pageIdArray.length - 1].trim().toLowerCase() + " for x";
+		
+		// get the sectionID
+		sectionID = gherkinSectionID;
+		
+		// Get the page
+		currentPage =  getCurrentPage(pageID.toLowerCase());	
+		
+		System.out.println("User lands on section  = " + sectionID);
+		System.out.println("Page Unique Element = " + currentPage.getElement("Page Unique Element".toLowerCase(), objectID.toLowerCase()));
 		System.out.println("=============================================");
 
-	}	
+	}
+	else
+	{
+		// get the sectionID
+		sectionID = gherkinSectionID;
+		// get the pageID
+	    pageID = gherkinSectionID;
+		// Get the page
+		currentPage =  getCurrentPage(pageID.toLowerCase());	
+		
+		System.out.println("User lands on section  = " + sectionID);
+		System.out.println("Page Unique Element = " + currentPage.getElement("Title".toLowerCase()));
+		System.out.println("=============================================");
+	}
+	
 }
 
 public void lands_on_pageX(String gherkinPageID) throws Throwable 
