@@ -12,15 +12,15 @@ import net.thucydides.core.pages.PageObject;
 
 public class AmazonBasePageObject extends PageObject 
 {
-	private String objectID = null;
-
-	public String getObjectID() {
-		return objectID;
-	}
-
-	public void setObjectID(String objectID) {
-		this.objectID = objectID;
-	}
+//	private String objectID = null;
+//
+//	public String getObjectID() {
+//		return objectID;
+//	}
+//
+//	public void setObjectID(String objectID) {
+//		this.objectID = objectID;
+//	}
 
 	protected final static Map<String, String> mapTable = new HashMap<>();
 	

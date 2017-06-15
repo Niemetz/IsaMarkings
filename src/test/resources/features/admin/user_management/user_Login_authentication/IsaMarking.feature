@@ -11,14 +11,14 @@ Scenario: Amazon User Login Authentication
     Then user lands on the "New Indicator" page
     Given user is at the "Indicator.Main" section 
     
-    #When user clicks on the "Custom ISA Markings" button by the "Title" field
-    #Then user lands on the "ISA Markings for Title field" section
-    #When user clicks on the "Title.Policies.Further Sharing" section link
-    #Then user lands on the "Title.Policies.Further Sharing" section
-    #
-    #Given user is at the "ISA Markings for Indicator" section 
-    #When user clicks on the "Indicator.Policies" section link
-    #Then user lands on the "Indicator.Policies" section
+    When user clicks on the "Custom ISA Markings" button by the "Title" field
+    Then user lands on the "ISA Markings for Title field" section
+    When user clicks on the "Title.Policies.Further Sharing" section link
+    Then user lands on the "Title.Policies.Further Sharing" section
+    
+    Given user is at the "ISA Markings for Indicator" section 
+    When user clicks on the "Indicator.Policies" section link
+    Then user lands on the "Indicator.Policies" section
 
 
 

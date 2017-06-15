@@ -8,6 +8,7 @@ import org.jruby.RubyProcess.Sys;
 import auto.pages.AmazonBasePageObject;
 import auto.util.*;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.steps.ScenarioSteps;
 
 @SuppressWarnings("serial")
@@ -67,12 +68,15 @@ public class EndUserSteps extends ScenarioSteps {
 	// Ghekin statment = When user clicks on the "Custom ISA Markings" button by the 'Title" field
 	public void clicks_on_the_button_by_the_field(String gherkinElementID, String gherFieldID) throws Throwable 
 	{
-        elementID = gherkinElementID.toLowerCase() + " button for " +  gherFieldID + " field";
-        System.out.println("When user clicks on the " + gherkinElementID +  " button by the " +  gherFieldID +  " field");
-	    System.out.println("Element to be clicked = " + currentPage.getElement(elementID,objectID));
+        elementID = gherkinElementID.toLowerCase() + " button by " +  gherFieldID.toLowerCase() + " field";
+        
+        System.out.println("When user clicks on the " + elementID);
+	    System.out.println("Element to be clicked = " + currentPage.getElement(elementID.toLowerCase(), objectID));
 	    System.out.println("=============================================");
 	}
 
+// 1 - Given user is at the "Indicator.Main" section 
+// 2 - user lands on the "ISA Markings for Title field" section
 public void lands_on_the_section(String gherkinSectionID) throws Throwable 
 {
 	if(gherkinSectionID.contains("ISA Markings for"))
@@ -133,7 +137,7 @@ public void lands_on_the_section(String gherkinSectionID) throws Throwable
 		currentPage =  getCurrentPage(pageID.toLowerCase());	
 
 		System.out.println("User lands on section  = " + sectionID);
-		System.out.println("Page Unique Element = " + currentPage.getElement("Title".toLowerCase(),objectID));
+		System.out.println("Page Unique Element = " + currentPage.getElement("page unique element".toLowerCase(),objectID));
 		System.out.println("=============================================");
 	}
 	
@@ -141,9 +145,12 @@ public void lands_on_the_section(String gherkinSectionID) throws Throwable
 
 public void lands_on_pageX(String gherkinPageID) throws Throwable 
 {
-     // Get the page
+
+	 // get the pageID
+     this.pageID = gherkinPageID.toLowerCase();
+     currentPage = getCurrentPage(this.pageID);
 	 System.out.println("User lands on page  = " + gherkinPageID);
-	 System.out.println("Page Unique Element = " + getCurrentPage(gherkinPageID.toLowerCase()).getElement("Page Unique Element".toLowerCase(),objectID));
+	 System.out.println("Page Unique Element = " + currentPage.getElement("Page Unique Element".toLowerCase(),objectID));
 	 System.out.println("=============================================");
 }
 
