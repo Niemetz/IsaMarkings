@@ -19,12 +19,12 @@ public class AmazonBasePageObject extends PageObject
     	mapTable.clear();
     }
 
-	// Get a single element on the page
-	public String getElement(String gherkinElement) 
-	{
-		//return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();
-		return mapTable.get(gherkinElement.toLowerCase());
-    }
+//	// Get a single element on the page
+//	public String getElement(String gherkinElement) 
+//	{
+//		//return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();
+//		return mapTable.get(gherkinElement.toLowerCase());
+//    }
 	// Get a single element on the page based on the sectionID
 	public String getElement(String gherkinElement, String objectID) 
 	{

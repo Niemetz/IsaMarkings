@@ -69,7 +69,7 @@ public class EndUserSteps extends ScenarioSteps {
 	{
         elementID = gherkinElementID.toLowerCase() + " button for " +  gherFieldID + " field";
         System.out.println("When user clicks on the " + gherkinElementID +  " button by the " +  gherFieldID +  " field");
-	    System.out.println("Element to be clicked = " + currentPage.getElement(elementID));
+	    System.out.println("Element to be clicked = " + currentPage.getElement(elementID,objectID));
 	    System.out.println("=============================================");
 	}
 
@@ -131,9 +131,9 @@ public void lands_on_the_section(String gherkinSectionID) throws Throwable
 	    pageID = gherkinSectionID;
 		// Get the page
 		currentPage =  getCurrentPage(pageID.toLowerCase());	
-		
+
 		System.out.println("User lands on section  = " + sectionID);
-		System.out.println("Page Unique Element = " + currentPage.getElement("Title".toLowerCase()));
+		System.out.println("Page Unique Element = " + currentPage.getElement("Title".toLowerCase(),objectID));
 		System.out.println("=============================================");
 	}
 	
@@ -143,7 +143,7 @@ public void lands_on_pageX(String gherkinPageID) throws Throwable
 {
      // Get the page
 	 System.out.println("User lands on page  = " + gherkinPageID);
-	 System.out.println("Page Unique Element = " + getCurrentPage(gherkinPageID.toLowerCase()).getElement("Page Unique Element".toLowerCase()));
+	 System.out.println("Page Unique Element = " + getCurrentPage(gherkinPageID.toLowerCase()).getElement("Page Unique Element".toLowerCase(),objectID));
 	 System.out.println("=============================================");
 }
 
