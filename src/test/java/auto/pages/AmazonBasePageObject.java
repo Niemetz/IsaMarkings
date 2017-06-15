@@ -12,6 +12,16 @@ import net.thucydides.core.pages.PageObject;
 
 public class AmazonBasePageObject extends PageObject 
 {
+	private String objectID = null;
+
+	public String getObjectID() {
+		return objectID;
+	}
+
+	public void setObjectID(String objectID) {
+		this.objectID = objectID;
+	}
+
 	protected final static Map<String, String> mapTable = new HashMap<>();
 	
     public AmazonBasePageObject()
@@ -25,6 +35,7 @@ public class AmazonBasePageObject extends PageObject
 //		//return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();
 //		return mapTable.get(gherkinElement.toLowerCase());
 //    }
+    
 	// Get a single element on the page based on the sectionID
 	public String getElement(String gherkinElement, String objectID) 
 	{
