@@ -3,24 +3,18 @@ package auto.pages;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.junit.Assert;
-
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.PageObject;
 
+@SuppressWarnings("unused")
 public class AmazonBasePageObject extends PageObject 
 {
-//	private String objectID = null;
-//
-//	public String getObjectID() {
-//		return objectID;
-//	}
-//
-//	public void setObjectID(String objectID) {
-//		this.objectID = objectID;
-//	}
+	private String objectID = null;
+	public void setObjectID(String objectID) {
+		this.objectID = objectID;
+	}
 
 	protected final static Map<String, String> mapTable = new HashMap<>();
 	
@@ -29,20 +23,9 @@ public class AmazonBasePageObject extends PageObject
     	mapTable.clear();
     }
 
-//	// Get a single element on the page
-//	public String getElement(String gherkinElement) 
-//	{
-//		//return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();
-//		return mapTable.get(gherkinElement.toLowerCase());
-//    }
-    
 	// Get a single element on the page based on the sectionID
-	public String getElement(String gherkinElement, String objectID) 
+	public String getElement(String gherkinElement) 
 	{
-//		if(objectID.equalsIgnoreCase("main"))
-//		   return $(mapTable.get(gherkinElement.toLowerCase())).waitUntilPresent().and().waitUntilVisible();	
-//		
-//	     return $(mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID)).waitUntilPresent().and().waitUntilVisible();
 	     return mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID);
     }
 

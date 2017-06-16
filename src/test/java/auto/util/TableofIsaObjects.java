@@ -11,7 +11,6 @@ public class TableofIsaObjects {
 		mapTable.put("indicator".toLowerCase(), "indicator|object");
 		mapTable.put("package".toLowerCase(), "package|object");
 		
-		
 		// field level
 		mapTable.put("title".toLowerCase(), "title|field");
 		mapTable.put("indicator type".toLowerCase(), "indicator_type|field");

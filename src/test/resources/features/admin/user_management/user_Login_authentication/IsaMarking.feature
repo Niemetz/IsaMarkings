@@ -9,8 +9,8 @@ Feature: Requirement ID = 80.3 I AM FUTURE ENHANCEMENT ....An Amazon existing us
 Scenario: Amazon User Login Authentication
     Given user navigates to Amazon "Home" website
     Then user lands on the "New Indicator" page
-    Given user is at the "Indicator.Main" section 
     
+    Given user is at the "Indicator.Main" section 
     When user clicks on the "Custom ISA Markings" button by the "Title" field
     Then user lands on the "ISA Markings for Title field" section
     When user clicks on the "Title.Policies.Further Sharing" section link

@@ -3,8 +3,8 @@ package auto.util;
 import net.thucydides.core.steps.ScenarioSteps;
 import java.util.HashMap;
 import java.util.Map;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+//import java.lang.reflect.Constructor;
+//import java.lang.reflect.InvocationTargetException;
 
 @SuppressWarnings("serial")
 public class TableOfAllPages extends ScenarioSteps {
