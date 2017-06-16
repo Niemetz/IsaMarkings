@@ -16,6 +16,7 @@ public class EndUserSteps extends ScenarioSteps {
 	
 	// ISA Markings Variables
 	String pageID;
+	String sectionPageID;
 	String sectionID ;
 	String elementID;
 	String objectID = null;
@@ -33,6 +34,8 @@ public class EndUserSteps extends ScenarioSteps {
 		this.pageID = null;
 		this.currentPage = null;
 		this.sectionID = null;
+		this.elementID = null;
+		this.sectionPageID = null;
 	}
 	
 	@Step
@@ -46,20 +49,19 @@ public class EndUserSteps extends ScenarioSteps {
 	{
 		// if the desired page was not registered in the allPageUnderTest, 
 		// then add the desired page to the allPageUnderTest.
-		pageID = gherkinpageID.toLowerCase();
-		if (!allPagesUnderTest.containsKey(pageID)) 
+		if (!allPagesUnderTest.containsKey(gherkinpageID)) 
 		{
 		    @SuppressWarnings("rawtypes")
-		    Class targetPageClass = (Class) tableOfAllPages.getClass(pageID);
-			allPagesUnderTest.put(new String(pageID),  (AmazonBasePageObject) getPages().get(targetPageClass));
+		    Class targetPageClass = (Class) tableOfAllPages.getClass(gherkinpageID);
+			allPagesUnderTest.put(new String(gherkinpageID.toLowerCase()),  (AmazonBasePageObject) getPages().get(targetPageClass));
 		}
 		// return the desired page to the caller
-		return allPagesUnderTest.get(pageID);
+		return allPagesUnderTest.get(gherkinpageID.toLowerCase());
 	}
 	
 	public  String  targetElement(String gherkinElement)
 	{
-		return currentPage.getElement(gherkinElement);
+		return currentPage.getElement(gherkinElement.toLowerCase());
 	}
 	// This is where the a page, a section or a sub-section is loaded.
 	public void clicks_on_elementX(String gherkinElement) throws Throwable {
@@ -69,15 +71,17 @@ public class EndUserSteps extends ScenarioSteps {
 	// Ghekin statment = When user clicks on the "Custom ISA Markings" button by the 'Title" field
 	public void clicks_on_the_button_by_the_field(String gherkinElementID, String gherFieldID) throws Throwable 
 	{
-        elementID = gherkinElementID + " button by " +  gherFieldID + " field";
+        elementID = gherkinElementID + " button by the " +  gherFieldID + " field";
         
         System.out.println("When user clicks on the " + elementID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
+	    System.out.println("pageID =  " + pageID);
+	    
 	    System.out.println("=============================================");
 	}
 
-// 1 - Given user is at the "Indicator.Main" section 
-// 2 - user lands on the "ISA Markings for Title field" section
+// 1 - Given user is at the "X.Y..." section 
+// 2 - Then user lands on the "ISA Markings for X field" section
 public void lands_on_the_section_X(String gherkinSectionID) throws Throwable 
 {
 	if(gherkinSectionID.contains("ISA Markings for"))
@@ -86,59 +90,61 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 		sectionID = gherkinSectionID.split("for")[1].trim().split("field")[0].trim();
 		//get objectID
 		objectID = tableofIsaObjects.getObjectID(sectionID);
-		// get the pageID
+		// get the sectionPageID
 		if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("field"))
-			pageID = "isa markings for x field";
+			sectionPageID = "isa markings for x field";
 		else if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("object"))
-			pageID = "isa markings for x";
+			sectionPageID = "isa markings for x";
 	}	
 	else if(gherkinSectionID.contains(".") && !gherkinSectionID.contains("Main"))
 	{
 		// identify the pageID by splitting the sebSectonLinkID
 		String[] pageIdArray = gherkinSectionID.split("\\.");
-		// get the pageID
+		// get the sectionPageID
 		String objectType = tableofIsaObjects.getObjecType(pageIdArray[0].trim().toLowerCase());
 		if(objectType.equalsIgnoreCase("field"))
-			pageID = pageIdArray[pageIdArray.length - 1].trim() + " for x field";
+			sectionPageID = pageIdArray[pageIdArray.length - 1].trim() + " for x field";
 		else if(objectType.equalsIgnoreCase("object"))
-			pageID = pageIdArray[pageIdArray.length - 1].trim() + " for x";
+			sectionPageID = pageIdArray[pageIdArray.length - 1].trim() + " for x";
 		// get the sectionID
 		sectionID = gherkinSectionID;
 		// get objectID
 		objectID = tableofIsaObjects.getObjectID(pageIdArray[0].trim());
 	}
-	else
+	else if(gherkinSectionID.contains("Main"))
 	{
 		// get the sectionID
 		sectionID = gherkinSectionID;
 		// get the pageID
-	    pageID = gherkinSectionID;
+		sectionPageID = gherkinSectionID;
+
 		// set objectID
 		objectID = null;	
 	}
-	
-	// Get the current page
-	currentPage =  getCurrentPage(pageID.toLowerCase());
-	// set the objectID to the super class
-	currentPage.setObjectID(objectID);
-	 System.out.println("User lands on page  = " + pageID);
-	 System.out.println("Page Unique Element = " + targetElement("Page Unique Element"));
+
+	 // Get the current page
+	 currentPage =  getCurrentPage(sectionPageID);
+	 // set the objectID to the super class
+	 currentPage.setObjectID(objectID);
+	 System.out.println("User lands on section  = " + sectionPageID + " | x = " + objectID);
+	 System.out.println("Section's unique element = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
 }
 
 public void lands_on_page_X(String gherkinPageID) throws Throwable 
 {
-	 // get the pageID
-     this.pageID = gherkinPageID.toLowerCase();
+	 // set the pageID
+     this.pageID = gherkinPageID;
+     //get the current page
      currentPage = getCurrentPage(this.pageID);
 	 System.out.println("User lands on page  = " + gherkinPageID);
-	 System.out.println("Page Unique Element = " + targetElement("Page Unique Element"));
+	 System.out.println("Page's unique element = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
 }
+
 	// Ghekin statment = 
 	// 1 - When user clicks on the "SectionID.subSectionID" 
     // For Exmaple: When user clicks on the "Title.Policies" link.
-
 	public void clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
 	{
 		// identify the pageID by splitting the sebSectonLinkID

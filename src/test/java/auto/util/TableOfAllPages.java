@@ -18,7 +18,9 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("account main", "auto.pages.AccountMainPage");
 		appPages.put("your account", "auto.pages.YourAccountPage");
 		appPages.put("new indicator", "auto.pages.NewIndicatorPage");
+		appPages.put("new package", "auto.pages.NewPackagePage");
 		appPages.put("indicator.main", "auto.pages.IndicatorMain");
+		appPages.put("package.main", "auto.pages.PackageMain");
 		appPages.put("page2", "auto.pages.IndicatorMain");
 		appPages.put("home", "auto.pages.HomePage");
 		appPages.put("page3", "auto.pages.IndicatorMain");
@@ -56,6 +58,6 @@ public class TableOfAllPages extends ScenarioSteps {
 
 	@SuppressWarnings("rawtypes")
 	public Class getClass(String pageName) throws ClassNotFoundException {
-		return  Class.forName(appPages.get(pageName));
+		return  Class.forName(appPages.get(pageName.toLowerCase()));
 	}
 }
