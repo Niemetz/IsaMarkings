@@ -73,10 +73,10 @@ public class EndUserSteps extends ScenarioSteps {
 	{
         elementID = gherkinElementID + " button by the " +  gherFieldID + " field";
         
+   	    System.out.println("Current Page        =  " + pageID);
+   	    System.out.println("Current Section     =  " + sectionPageID);
         System.out.println("When user clicks on the " + elementID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
-	    System.out.println("pageID =  " + pageID);
-	    
 	    System.out.println("=============================================");
 	}
 
@@ -115,7 +115,7 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 	{
 		// get the sectionID
 		sectionID = gherkinSectionID;
-		// get the pageID
+		// get the sectionPageID
 		sectionPageID = gherkinSectionID;
 
 		// set objectID
@@ -126,6 +126,9 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 	 currentPage =  getCurrentPage(sectionPageID);
 	 // set the objectID to the super class
 	 currentPage.setObjectID(objectID);
+	 
+	 System.out.println("Current Page        =  " + pageID);
+	 System.out.println("Current Section     =  " + sectionPageID);
 	 System.out.println("User lands on section  = " + sectionPageID + " | x = " + objectID);
 	 System.out.println("Section's unique element = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
@@ -137,6 +140,8 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
      this.pageID = gherkinPageID;
      //get the current page
      currentPage = getCurrentPage(this.pageID);
+     
+     System.out.println("Current Page =  " + pageID);
 	 System.out.println("User lands on page  = " + gherkinPageID);
 	 System.out.println("Page's unique element = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
@@ -155,6 +160,9 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
 
 		// get the elementID
         elementID = pageIdArray[pageIdArray.length - 1].trim();
+        
+   	    System.out.println("Current Page        =  " + pageID);
+   	    System.out.println("Current Section     =  " + sectionPageID);
         System.out.println("user clicks on the " + gherkinSectionLinkID + " section link");
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
 	    System.out.println("=============================================");
