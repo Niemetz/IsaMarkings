@@ -1,6 +1,7 @@
 package auto.pages;
 
 public class NewPackagePage extends AmazonBasePageObject {
+	
 	public NewPackagePage()
 	{
 		mapTable.clear();
