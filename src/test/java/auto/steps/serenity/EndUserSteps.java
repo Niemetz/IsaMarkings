@@ -127,11 +127,11 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 	 // set the objectID to the super class
 	 currentPage.setObjectID(objectID);
 	 
-	 System.out.println("Current Page              = " + pageID);
-	 System.out.println("Gherkin Statement         = Then user lands on the " + sectionID + " section");
-	 System.out.println("Section Page to be loaded = " + sectionPageID );
-	 System.out.println("Current Section           = " + sectionID);
-	 System.out.println("Section's unique element  = " + targetElement("Page Unique Element"));
+	 System.out.println("Current Page                = " + pageID);
+	 System.out.println("Gherkin Statement           = Then user lands on the " + sectionID + " section");
+	 System.out.println("Section PageID to be loaded = " + sectionPageID );
+	 System.out.println("Current Section             = " + sectionID);
+	 System.out.println("Section's unique element    = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
 }
 
@@ -142,10 +142,10 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
      //get the current page
      currentPage = getCurrentPage(this.pageID);
      
-     System.out.println("Current Page          = " + pageID);
-	 System.out.println("Gherkin Statement     = Then user lands on the " + gherkinPageID + " page");
-	 System.out.println("Page to be loaded     = " + pageID);
-	 System.out.println("Page's unique element = " + targetElement("Page Unique Element"));
+     System.out.println("Current Page            = " + pageID);
+	 System.out.println("Gherkin Statement       = Then user lands on the " + gherkinPageID + " page");
+	 System.out.println("PageID to be loaded     = " + pageID);
+	 System.out.println("Page's unique element   = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
 }
 
@@ -154,7 +154,7 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
     // For Exmaple: When user clicks on the "Title.Policies" link.
 	public void clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
 	{
-		// identify the pageID by splitting the sebSectonLinkID
+		// identify the pageID by splitting the gherkinSectionLinkID
 		String[] pageIdArray = gherkinSectionLinkID.split("\\.");
 		
 		// set the objectID to the super class
@@ -164,7 +164,7 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
         elementID = pageIdArray[pageIdArray.length - 1].trim();
         
    	    System.out.println("Current Page          = " + pageID);
-        System.out.println("Gherkin Statement     = " + "user clicks on the " + gherkinSectionLinkID + " section link");
+        System.out.println("Gherkin Statement     = " + "When user clicks on the " + gherkinSectionLinkID + " section link");
         System.out.println("Current Section       = " + sectionID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
 	    System.out.println("=============================================");
