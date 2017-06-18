@@ -74,8 +74,9 @@ public class EndUserSteps extends ScenarioSteps {
         elementID = gherkinElementID + " button by the " +  gherFieldID + " field";
         
    	    System.out.println("Current Page          = " + pageID);
-        System.out.println("Gherkin Statement     = When user clicks on the " + elementID);
-        System.out.println("Current Section       = " + sectionPageID);
+        
+        System.out.println("Gherkin Statement     = When user clicks on the " + gherkinElementID + " button by the " +  "\""+ gherFieldID + "\"" + " field");
+        System.out.println("Current SectionID     = " + sectionPageID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
 	    System.out.println("=============================================");
 	}
@@ -128,9 +129,10 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 	 currentPage.setObjectID(objectID);
 	 
 	 System.out.println("Current Page                = " + pageID);
-	 System.out.println("Gherkin Statement           = Then user lands on the " + sectionID + " section");
+	 
+	 System.out.println("Gherkin Statement           = Then user lands on the " + "\"" + sectionPageID +"\"" + " section");
 	 System.out.println("Section PageID to be loaded = " + sectionPageID );
-	 System.out.println("Current Section             = " + sectionID);
+	 System.out.println("Current SectionID           = " + sectionID);
 	 System.out.println("Section's unique element    = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
 }
@@ -143,7 +145,7 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
      currentPage = getCurrentPage(this.pageID);
      
      System.out.println("Current Page            = " + pageID);
-	 System.out.println("Gherkin Statement       = Then user lands on the " + gherkinPageID + " page");
+	 System.out.println("Gherkin Statement       = Then user lands on the " + "\"" + gherkinPageID + "\"" + " page");
 	 System.out.println("PageID to be loaded     = " + pageID);
 	 System.out.println("Page's unique element   = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
@@ -164,8 +166,8 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
         elementID = pageIdArray[pageIdArray.length - 1].trim();
         
    	    System.out.println("Current Page          = " + pageID);
-        System.out.println("Gherkin Statement     = " + "When user clicks on the " + gherkinSectionLinkID + " section link");
-        System.out.println("Current Section       = " + sectionID);
+        System.out.println("Gherkin Statement     = " + "When user clicks on the " + "\"" + gherkinSectionLinkID + "\"" + " section link");
+        System.out.println("Current SectionID     = " + sectionID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
 	    System.out.println("=============================================");
 	}
