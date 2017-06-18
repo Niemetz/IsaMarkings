@@ -12,6 +12,6 @@ public class IsaMarkingsForXField extends AmazonBasePageObject {
 		mapTable.put("control set".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/control set link");
 		mapTable.put("further sharing".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/further sharing link");
 		mapTable.put("responsible entity".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/responsible entity link");
-		mapTable.put("Page Unique Element".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/Some Unique Element");
+		mapTable.put("Page Unique Element".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/Section");
 	}
 }
