@@ -161,12 +161,20 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
 		
 		// set the objectID to the super class
 		currentPage.setObjectID(tableofIsaObjects.getObjectID(gherkinSectionLinkID.split("\\.")[0].trim()));
+		sectionID = "";
+		for(int i=0; i< (pageIdArray.length -1) ;i++)
+		{
+			if(i == 0)
+		       sectionID = pageIdArray[i];
+			else
+			   sectionID = sectionID + "." + pageIdArray[i];
+		}
 
 		// get the elementID
         elementID = pageIdArray[pageIdArray.length - 1].trim();
         
    	    System.out.println("Current Page          = " + pageID);
-        System.out.println("Gherkin Statement     = " + "When user clicks on the " + "\"" + gherkinSectionLinkID + "\"" + " section link");
+        System.out.println("Gherkin Statement     = " + "Section link to be clicked = " + "\"" + gherkinSectionLinkID + "\"");
         System.out.println("Current SectionID     = " + sectionID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
 	    System.out.println("=============================================");
