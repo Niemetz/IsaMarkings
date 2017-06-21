@@ -13,6 +13,9 @@ public class NewIndicatorPage extends AmazonBasePageObject {
 		mapTable.put("indicator type".toLowerCase(), "//indicator/main//Indicator Type/ffield");
 		mapTable.put("custom isa markings button by the indicator type field".toLowerCase(), "//indicator/main/isa marking button/by the/indicator type field");
 
+		// This is a section link that is NOT part of "ISA Markings" section links
+		mapTable.put("Responsible Entity".toLowerCase(), "//indicator/main/Responsible Entity link");
+		
 		mapTable.put("Page Unique Element".toLowerCase(), "//Page Unique Element/on/New Indicator/Page");
 	}
 }

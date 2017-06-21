@@ -1,10 +1,10 @@
 package auto.steps.serenity;
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 import auto.pages.AmazonBasePageObject;
 import auto.util.*;
-import net.serenitybdd.core.pages.WebElementFacade;
+//import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 
 import net.thucydides.core.steps.ScenarioSteps;
@@ -22,10 +22,13 @@ public class EndUserSteps extends ScenarioSteps {
 	String objectID = null;
 
 	// This table is used to store all the instance variables for pages under test
-	private static final Map<String, AmazonBasePageObject> allPagesUnderTest = new HashMap<>();
+	//private static final Map<String, AmazonBasePageObject> allPagesUnderTest = new HashMap<>();
 	
 	// This table contains all pages of the app
 	TableOfAllPages tableOfAllPages = new TableOfAllPages();
+	
+	//This table contains the "real" objectID.  
+	//The objectID is used to identify the type of an ISA Markings object.
 	TableofIsaObjects tableofIsaObjects = new TableofIsaObjects();
 
 	public EndUserSteps() 
@@ -47,21 +50,12 @@ public class EndUserSteps extends ScenarioSteps {
 	@SuppressWarnings("unchecked")
 	public AmazonBasePageObject getCurrentPage(String gherkinpageID) throws ClassNotFoundException 
 	{
-		// if the desired page was not registered in the allPageUnderTest, 
-		// then add the desired page to the allPageUnderTest.
-		if (!allPagesUnderTest.containsKey(gherkinpageID)) 
-		{
-		    @SuppressWarnings("rawtypes")
-		    Class targetPageClass = (Class) tableOfAllPages.getClass(gherkinpageID);
-			allPagesUnderTest.put(new String(gherkinpageID.toLowerCase()),  (AmazonBasePageObject) getPages().get(targetPageClass));
-		}
-		// return the desired page to the caller
-		return allPagesUnderTest.get(gherkinpageID.toLowerCase());
+		return (AmazonBasePageObject) getPages().get(tableOfAllPages.getClass(gherkinpageID));
 	}
 	
 	public  String  targetElement(String gherkinElement)
 	{
-		return currentPage.getElement(gherkinElement.toLowerCase());
+		return currentPage.getElement(gherkinElement);
 	}
 	// This is where the a page, a section or a sub-section is loaded.
 	public void clicks_on_elementX(String gherkinElement) throws Throwable {
@@ -74,7 +68,6 @@ public class EndUserSteps extends ScenarioSteps {
         elementID = gherkinElementID + " button by the " +  gherFieldID + " field";
         
    	    System.out.println("Current Page          = " + pageID);
-        
         System.out.println("Gherkin Statement     = When user clicks on the " + gherkinElementID + " button by the " +  "\""+ gherFieldID + "\"" + " field");
         System.out.println("Current SectionID     = " + sectionPageID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
@@ -112,7 +105,7 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 		// get objectID
 		objectID = tableofIsaObjects.getObjectID(pageIdArray[0].trim());
 	}
-	else if(gherkinSectionID.contains("Main"))
+	else
 	{
 		// get the sectionID
 		sectionID = gherkinSectionID;
@@ -129,7 +122,6 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 	 currentPage.setObjectID(objectID);
 	 
 	 System.out.println("Current Page                = " + pageID);
-	 
 	 System.out.println("Gherkin Statement           = Then user lands on the " + "\"" + sectionPageID +"\"" + " section");
 	 System.out.println("Section PageID to be loaded = " + sectionPageID );
 	 System.out.println("Current SectionID           = " + sectionID);
@@ -156,23 +148,33 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
     // For Exmaple: When user clicks on the "Title.Policies" link.
 	public void clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
 	{
-		// identify the pageID by splitting the gherkinSectionLinkID
-		String[] pageIdArray = gherkinSectionLinkID.split("\\.");
-		
-		// set the objectID to the super class
-		currentPage.setObjectID(tableofIsaObjects.getObjectID(gherkinSectionLinkID.split("\\.")[0].trim()));
-		sectionID = "";
-		for(int i=0; i< (pageIdArray.length -1) ;i++)
+		if(gherkinSectionLinkID.contains("."))
 		{
+		  // identify the pageID by splitting the gherkinSectionLinkID
+		  String[] pageIdArray = gherkinSectionLinkID.split("\\.");
+		
+		  // set the objectID to the super class
+		  currentPage.setObjectID(tableofIsaObjects.getObjectID(gherkinSectionLinkID.split("\\.")[0].trim()));
+
+		  // set the sectionID
+		  for(int i=0; i< (pageIdArray.length -1) ;i++)
+		  {
 			if(i == 0)
 		       sectionID = pageIdArray[i];
 			else
 			   sectionID = sectionID + "." + pageIdArray[i];
-		}
+		  }
 
-		// get the elementID
-        elementID = pageIdArray[pageIdArray.length - 1].trim();
-        
+		 // get the elementID
+         elementID = pageIdArray[pageIdArray.length - 1].trim();
+
+	    } //End If
+		else
+		{
+			elementID = gherkinSectionLinkID;
+			sectionID = gherkinSectionLinkID;
+		}
+		
    	    System.out.println("Current Page          = " + pageID);
         System.out.println("Gherkin Statement     = " + "Section link to be clicked = " + "\"" + gherkinSectionLinkID + "\"");
         System.out.println("Current SectionID     = " + sectionID);
