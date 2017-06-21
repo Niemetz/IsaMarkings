@@ -42,6 +42,16 @@ public class TableOfAllPages extends ScenarioSteps {
 
 	@SuppressWarnings("rawtypes")
 	public Class getClass(String pageName) throws ClassNotFoundException {
-		return  Class.forName(appPages.get(pageName.toLowerCase()));
+
+		if(!appPages.containsKey(pageName.toLowerCase()))
+		{
+			System.out.println("ERROR!!!! The page you are lookng for is NOT registered in the table of all pages....");
+			//System.err.println("ERROR!!!! The page you are lookng for is NOT in the table of all pages....");
+			return null;
+		}
+		else
+		   return  Class.forName(appPages.get(pageName.toLowerCase()));
+		
+
 	}
 }

@@ -8,7 +8,7 @@ Feature: Requirement ID = 80.3 An Amazon existing user is able to log on to his/
 @Amazon-User-Login-Authentication
 Scenario: Amazon User Login Authentication
     Given user navigates to Amazon "Home" website
-    Then user lands on the "New Indicator" page
+    Then user lands on the "New2 Indicator" page
     
     ####################################
     # User clicks on the a link on the page.  This link is NOT part of the ISA MArkings links
