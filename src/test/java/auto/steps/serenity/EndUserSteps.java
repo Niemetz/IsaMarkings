@@ -139,12 +139,6 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 {
 	if(gherkinSectionID.contains("ISA Markings for"))
 	{
-		
-		
-		// get the sectionID
-		//sectionID = gherkinSectionID.split("for")[1].trim().split("field")[0].trim();
-		
-		
 		//get objectID
 		objectID = tableofIsaObjects.getObjectID(sectionID);
 		// get the sectionPageID
@@ -163,20 +157,11 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 			sectionPageID = "isa markings for x field: " + pageIdArray[pageIdArray.length - 1].trim();
 		else if(objectType.equalsIgnoreCase("object"))
 			sectionPageID = "isa markings for x: " + pageIdArray[pageIdArray.length - 1].trim() ;
-		
-		
-		// get the sectionID
-		//sectionID = gherkinSectionID;
-		
-		
 		// get objectID
 		objectID = tableofIsaObjects.getObjectID(pageIdArray[0].trim());
 	}
 	else
 	{
-		// get the sectionID
-		//sectionID = gherkinSectionID;
-		
 		// get the sectionPageID
 		sectionPageID = gherkinSectionID;
 		// set objectID
@@ -210,28 +195,23 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
 	 System.out.println("=============================================");
 }
 
-	// Ghekin statment = 
-	// 1 - When user clicks on the "SectionID.subSectionID" 
-    // For Exmaple: When user clicks on the "Title.Policies" link.
+	// Ghekin statment =  When user clicks on the "X.Y" section link
+    // For Exmaple: When user clicks on the "Title.Policies" link 
+    // Important Note: 
+    // The sectionID is set at the following gherkin statements:
+    //  1 -  When user clicks on the "X.Y" section link
+    //  2 -  Given user is at the "X" section
+  
 	public void clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
 	{
 		if(gherkinSectionLinkID.contains("."))
 		{
-		  // identify the pageID by splitting the gherkinSectionLinkID
+		  // identify the pageID by parsing the gherkinSectionLinkID
 		  String[] pageIdArray = gherkinSectionLinkID.split("\\.");
 		
 		  // set the objectID to the super class
 		  currentPage.setObjectID(tableofIsaObjects.getObjectID(gherkinSectionLinkID.split("\\.")[0].trim()));
 		  sectionID = gherkinSectionLinkID;
-		  
-//		  // set the sectionID
-//		  for(int i=0; i< (pageIdArray.length -1) ;i++)
-//		  {
-//			if(i == 0)
-//		       sectionID = pageIdArray[i];
-//			else
-//			   sectionID = sectionID + "." + pageIdArray[i];
-//		  }
 
 		 // get the elementID
          elementID = pageIdArray[pageIdArray.length - 1].trim();
