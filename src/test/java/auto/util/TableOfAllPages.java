@@ -30,13 +30,16 @@ public class TableOfAllPages extends ScenarioSteps {
 		
         // ISA MArkings common templates 
 		appPages.put("isa markings for x field", "auto.pages.IsaMarkingsForXField");
+		
+		appPages.put("isa markings for x field: control set", "auto.pages.ControlSetForXField");
+		appPages.put("isa markings for x field: policies", "auto.pages.PoliciesForXField");
+		appPages.put("isa markings for x field: further sharing", "auto.pages.FurtherSharingForXField");
+		
 		appPages.put("isa markings for x", "auto.pages.IsaMarkingsForX");
-		appPages.put("policies for x", "auto.pages.PoliciesForX");
-		appPages.put("policies for x field", "auto.pages.PoliciesForXField");
-		appPages.put("further sharing for x field", "auto.pages.FurtherSharingForXField");
-		appPages.put("further sharing for x", "auto.pages.FurtherSharingForX");
-		appPages.put("control set for x field", "auto.pages.ControlSetForXField");
-		appPages.put("control set for x", "auto.pages.ControlSetForX");
+		
+		appPages.put("isa markings for x: policies", "auto.pages.PoliciesForX");
+		appPages.put("isa markings for x: further sharing", "auto.pages.FurtherSharingForX");
+		appPages.put("isa markings for x: control set", "auto.pages.ControlSetForX");
 
 	}
 
@@ -45,7 +48,7 @@ public class TableOfAllPages extends ScenarioSteps {
 
 		if(!appPages.containsKey(pageName.toLowerCase()))
 		{
-			System.out.println("ERROR!!!! The page you are lookng for is NOT registered in the table of all pages....");
+			System.out.println("ERROR!!!! page " + "\"" + pageName + "\"" +" NOT found in the TableOfAllPages ...");
 			//System.err.println("ERROR!!!! The page you are lookng for is NOT in the table of all pages....");
 			return null;
 		}

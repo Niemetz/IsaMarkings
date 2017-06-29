@@ -16,7 +16,7 @@ public class AmazonBasePageObject extends PageObject
 		this.objectID = objectID;
 	}
 
-	protected final static Map<String, String> mapTable = new HashMap<>();
+	public final static Map<String, String> mapTable = new HashMap<>();
 	
     public AmazonBasePageObject()
     {
@@ -26,7 +26,7 @@ public class AmazonBasePageObject extends PageObject
 	// Get a single element on the page based on the sectionID
 	public String getElement(String gherkinElement) 
 	{
-	     return mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID);
+	     return mapTable.get(gherkinElement.toLowerCase()).replaceAll("&objectID&",objectID).replace("|dynamic", "").trim();
     }
 
 	@Step("I am at the  AmazonPbasePageObject class")

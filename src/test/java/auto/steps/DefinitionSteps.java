@@ -21,7 +21,7 @@ public class DefinitionSteps {
 
 	// @Step
 	//@When("^user clicks on the \"([^\"]*)\" (?:button|radio button|check box|.*?)$")
-	@When("^user clicks on the \"([^\"]*)\" (?:button|radio button|check box|)$")
+	@When("^user clicks on the \"([^\"]*)\" (?:button|radio button|check box|field)$")
 	public void user_clicks_on_elementX(String gherkinElement) throws Throwable {
 		user.clicks_on_elementX(gherkinElement);
 	}
@@ -32,15 +32,20 @@ public class DefinitionSteps {
 		user.clicks_on_the_button_by_the_field(gherkinElement, fieldName);
 	}
 
-	// @Step
+	 @Step
 	//@Then("^user lands on the \"([^\"]*)\" page$")
 	@Then("^user (?:should see|lands on|is at|is on|.*?) the \"([^\"]*)\" page$")
 	public void user_lands_on_page_X(String gherkinPageName) throws Throwable {
 		user.lands_on_page_X(gherkinPageName);
 	}
+	 
+	 @Given("^user is at the \"([^\"]*)\" section$")
+	 public void user_is_at_the_section(String gherkinSectionID) throws Throwable {
+            user.is_at_the_section_X(gherkinSectionID);
+	 }
 
-	//@Then("^user (?:lands on the|is at the|.*?) \"([^\"]*)\" section$")
-	@Then("^user (?:should see|lands on|is at|is on|.*?) the \"([^\"]*)\" section$")
+	//@Then("^user (?:lands on the|should see the|.*?) \"([^\"]*)\" section$")
+	@Then("^user (?:should see|lands on) the \"([^\"]*)\" section$")
 	public void user_lands_on_the_section_X(String gherkinSectionID) throws Throwable 
 	{
         user.lands_on_the_section_X(gherkinSectionID);
@@ -52,5 +57,10 @@ public class DefinitionSteps {
           user.clicks_on_the_section_link(gherkinSectionLinkID);
 	}
 	
+	@Step
+	@Then("^user verifies that all expected elmenets are dispayed$")
+	public void user_verifies_that_all_expected_elmenets_are_dispayed() throws Throwable {
+           user.verifies_that_all_expected_elmenets_are_dispayed();
+	}
 
 }
