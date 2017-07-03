@@ -25,8 +25,9 @@ Scenario: Amazon User Login Authentication
      When user clicks on the "Custom ISA Markings" button by the "Description" field
      Then user lands on the "ISA Markings for Description field" section
     # DO SOMETHING...on the "ISA Markings for Description field" section
-     When user clicks on the "Description.Policies.Further Sharing" section link
-     Then user lands on the "Description.Policies.Further Sharing" section
+     When user clicks on the "Description.Policies" section link
+    # Then user lands on the "Description.Policies.Further Sharing" section
+    Then user should see the "SubsectionX" section
     # DO SOMETHING...on the "Description.Policies.Further Sharing" section
     
     ####################################

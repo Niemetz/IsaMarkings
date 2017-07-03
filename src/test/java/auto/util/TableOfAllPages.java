@@ -40,6 +40,7 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("isa markings for x: policies", "auto.pages.PoliciesForX");
 		appPages.put("isa markings for x: further sharing", "auto.pages.FurtherSharingForX");
 		appPages.put("isa markings for x: control set", "auto.pages.ControlSetForX");
+		appPages.put("subsectionx", "auto.pages.SubSectionX");
 
 	}
 
