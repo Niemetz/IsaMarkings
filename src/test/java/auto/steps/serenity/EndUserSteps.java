@@ -25,7 +25,7 @@ public class EndUserSteps extends ScenarioSteps {
 	String sectionPageID;
 	String sectionID ;
 	String elementID;
-	String objectID = null;
+	String objectID;
 	
 	// This table contains all pages of the app
 	TableOfAllPages tableOfAllPages = new TableOfAllPages();
@@ -42,6 +42,7 @@ public class EndUserSteps extends ScenarioSteps {
 		this.sectionID = null;
 		this.elementID = null;
 		this.sectionPageID = null;
+		this.objectID = null;
 	}
 	
 	@Step
@@ -64,7 +65,7 @@ public class EndUserSteps extends ScenarioSteps {
 	public void clicks_on_elementX(String gherkinElement) throws Throwable {
 		System.out.println("Gherkin statement: And user clicks on the X element");
 		System.out.println("user clicks on the Element = " + "|" + currentPage.getElement(gherkinElement) + "|");
-		//currentPage.getElement(gherkinElement).waitUntilVisible().and().waitUntilClickable().click();
+		//currentPage.getElement(gherkinElement).click();
 	}
 	
 	// Ghekin statment = When user clicks on the "Custom ISA Markings" button by the 'Title" field
@@ -72,104 +73,120 @@ public class EndUserSteps extends ScenarioSteps {
 	{
 		// set sectionID
 		sectionID = gherFieldID;
+		
+		// set elementID
         elementID = gherkinElementID + " button by the " +  gherFieldID + " field";
         
    	    System.out.println("Current Page          = " + pageID);
         System.out.println("Gherkin Statement     = user clicks on the " +  "\"" +gherkinElementID + "\"" + " button by the " +  "\""+ gherFieldID + "\"" + " field");
         System.out.println("Current SectionID     = " + sectionID);
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
+	    //currentPage.getElement(gherkinElement).click();
 	    System.out.println("=============================================");
 	}
 
     // 1 - Given user is at the "X" section 
 	public void is_at_the_section_X(String gherkinSectionID) throws Throwable 
 	{
-		if(gherkinSectionID.contains("ISA Markings for"))
+		if(gherkinSectionID.contains("ISA Markings for") && isElementInTableofIsaObject(gherkinSectionID.split("for")[1].trim().split("field")[0].trim()))
 		{
-			// get the sectionID
+			// set the sectionID
 			sectionID = gherkinSectionID.split("for")[1].trim().split("field")[0].trim();
-			//get objectID
+			
+			//set objectID
 			objectID = tableofIsaObjects.getObjectID(sectionID);
-			// get the sectionPageID
+			
+			// set sectionPageID
 			if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("field"))
-				sectionPageID = "isa markings for x field";
+		      sectionPageID = "isa markings for x field";
 			else if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("object"))
 				sectionPageID = "isa markings for x";
 		}	
-		else if(gherkinSectionID.contains(".") && !gherkinSectionID.contains("Main"))
+		else if(gherkinSectionID.contains(".") && !gherkinSectionID.contains("Main") && isElementInTableofIsaObject(gherkinSectionID.split("\\.")[0]))
 		{
 			// set the sectionID
 			sectionID = gherkinSectionID;
+			
 			// identify the pageID by splitting the gherkinSectionID
 			String[] pageIdArray = gherkinSectionID.split("\\.");
-			// get the sectionPageID
-			String objectType = tableofIsaObjects.getObjecType(pageIdArray[0].trim().toLowerCase());
+			
+			// set the sectionPageID
+			String objectType = tableofIsaObjects.getObjecType(pageIdArray[0]);
 			if(objectType.equalsIgnoreCase("field"))
 				sectionPageID = "isa markings for x field: " + pageIdArray[pageIdArray.length - 1].trim();
 			else if(objectType.equalsIgnoreCase("object"))
 				sectionPageID = "isa markings for x: " + pageIdArray[pageIdArray.length - 1].trim() ;
-			// get objectID
-			objectID = tableofIsaObjects.getObjectID(pageIdArray[0].trim());
+			
+			// set objectID
+			objectID = tableofIsaObjects.getObjectID(pageIdArray[0]);
 		}
 		else
 		{
-			// get the sectionID
+			// set the sectionID
 			sectionID = gherkinSectionID;
-			// get the sectionPageID
+			
+			// set the sectionPageID
 			sectionPageID = gherkinSectionID;
+			
 			// set objectID
 			objectID = null;	
 		}
 
-		 // Get the current page
+		 // set current page
 		 currentPage =  getCurrentPage(sectionPageID);
-		 // set the objectID to the super class
+		 // set objectID to the super class
 		 currentPage.setObjectID(objectID);
 		 
-		 System.out.println("Current Page                = " + pageID);
+		 //System.out.println("Current Page                = " + pageID);
 		 System.out.println("Gherkin Statement           = Given user is at the " + "\"" + sectionPageID +"\"" + " section");
 		 System.out.println("Section PageID to be loaded = " + sectionPageID );
 		 System.out.println("Current SectionID           = " + sectionID);
 		 System.out.println("Section's unique element    = " + targetElement("Page Unique Element"));
+		 //targetElement("Page Unique Element");
 		 System.out.println("=============================================");
 	}
 
 // Gherkin Statement: Then user lands on the "ISA Markings for X field" section
 public void lands_on_the_section_X(String gherkinSectionID) throws Throwable 
 {
-	if(gherkinSectionID.contains("ISA Markings for"))
+	if(gherkinSectionID.contains("ISA Markings for") && isElementInTableofIsaObject(sectionID))
 	{
-		//get objectID
-		objectID = tableofIsaObjects.getObjectID(sectionID);
-		// get the sectionPageID
-		if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("field"))
-			sectionPageID = "isa markings for x field";
-		else if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("object"))
-			sectionPageID = "isa markings for x";
+	  //set objectID
+	  objectID = tableofIsaObjects.getObjectID(sectionID);
+				
+	  // set the sectionPageID
+	  if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("field"))
+		sectionPageID = "isa markings for x field";
+	  else if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("object"))
+		sectionPageID = "isa markings for x";
 	}	
-	else if(gherkinSectionID.contains(".") && !gherkinSectionID.contains("Main"))
+	else if(gherkinSectionID.contains(".") && !gherkinSectionID.contains("Main") && isElementInTableofIsaObject(gherkinSectionID.split("\\.")[0]))
 	{
 		// identify the pageID by splitting the sebSectonLinkID
 		String[] pageIdArray = gherkinSectionID.split("\\.");
-		// get the sectionPageID
-		String objectType = tableofIsaObjects.getObjecType(pageIdArray[0].trim().toLowerCase());
+
+		// set the sectionPageID
+		String objectType = tableofIsaObjects.getObjecType(pageIdArray[0]);
 		if(objectType.equalsIgnoreCase("field"))
-			sectionPageID = "isa markings for x field: " + pageIdArray[pageIdArray.length - 1].trim();
+		  sectionPageID = "isa markings for x field: " + pageIdArray[pageIdArray.length - 1].trim();
 		else if(objectType.equalsIgnoreCase("object"))
-			sectionPageID = "isa markings for x: " + pageIdArray[pageIdArray.length - 1].trim() ;
-		// get objectID
-		objectID = tableofIsaObjects.getObjectID(pageIdArray[0].trim());
+			 sectionPageID = "isa markings for x: " + pageIdArray[pageIdArray.length - 1].trim() ;
+		
+		// set objectID
+		objectID = tableofIsaObjects.getObjectID(pageIdArray[0]);
 	}
 	else
 	{
-		// get the sectionPageID
+		// set the sectionPageID
 		sectionPageID = gherkinSectionID;
+		
 		// set objectID
 		objectID = null;	
 	}
 
-	 // Get the current page
+	 // set the current page
 	 currentPage =  getCurrentPage(sectionPageID);
+	 
 	 // set the objectID to the super class
 	 currentPage.setObjectID(objectID);
 	 
@@ -185,7 +202,8 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
 {
 	 // set the pageID
      this.pageID = gherkinPageID;
-     //get the current page
+     
+     // set the current page
      currentPage = getCurrentPage(this.pageID);
      
      System.out.println("Current Page            = " + pageID);
@@ -199,36 +217,80 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
     // For Exmaple: When user clicks on the "Title.Policies" link 
     // Important Note: 
     // The sectionID is set at the following gherkin statements:
-    //  1 -  When user clicks on the "X.Y" section link
-    //  2 -  Given user is at the "X" section
+    // - When user clicks on the "X.Y" section link
   
-	public void clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
+public void clicks_on_the_section_link(String gherkinSectionID) throws Throwable 
+{
+	if(gherkinSectionID.contains("ISA Markings for") && isElementInTableofIsaObject(gherkinSectionID.split("for")[1].trim().split("field")[0].trim()))
 	{
-		if(gherkinSectionLinkID.contains("."))
-		{
-		  // identify the pageID by parsing the gherkinSectionLinkID
-		  String[] pageIdArray = gherkinSectionLinkID.split("\\.");
+		// set the sectionID
+		sectionID = gherkinSectionID.split("for")[1].trim().split("field")[0].trim();
 		
-		  // set the objectID to the super class
-		  currentPage.setObjectID(tableofIsaObjects.getObjectID(gherkinSectionLinkID.split("\\.")[0].trim()));
-		  sectionID = gherkinSectionLinkID;
-
-		 // get the elementID
-         elementID = pageIdArray[pageIdArray.length - 1].trim();
-
-	    } //End If
-		else
-		{
-			elementID = gherkinSectionLinkID;
-			sectionID = gherkinSectionLinkID;
-		}
+		// set sectionPageID
+		if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("field"))
+	      sectionPageID = "isa markings for x field";
+		else if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("object"))
+			sectionPageID = "isa markings for x";
 		
-   	    System.out.println("Current Page          = " + pageID);
-        System.out.println("Gherkin Statement     = " + "user clicks on the " + "\"" + gherkinSectionLinkID + "\"" + " section link");
-        System.out.println("Current SectionID     = " + sectionID);
-	    System.out.println("Element to be clicked = " + targetElement(elementID));
-	    System.out.println("=============================================");
+		//set objectID
+		objectID = tableofIsaObjects.getObjectID(sectionID);
+		
+		// set elementID
+		elementID = gherkinSectionID;
+
+	}	
+	else if(gherkinSectionID.contains(".") && !gherkinSectionID.contains("Main") && isElementInTableofIsaObject(gherkinSectionID.split("\\.")[0]))
+	{
+		
+		// identify the pageID by splitting the gherkinSectionID
+		String[] pageIdArray = gherkinSectionID.split("\\.");
+		
+		// set the sectionID
+		sectionID = pageIdArray[0];
+		
+		// set the sectionPageID
+		if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("field"))
+			//sectionPageID = "isa markings for x field: " + pageIdArray[pageIdArray.length - 1].trim();
+			sectionPageID = "isa markings for x field";
+		else if(tableofIsaObjects.getObjecType(sectionID).equalsIgnoreCase("object"))
+			// sectionPageID = "isa markings for x: " + pageIdArray[pageIdArray.length - 1].trim() ;
+			sectionPageID = "isa markings for x";
+		
+		// set objectID
+		objectID = tableofIsaObjects.getObjectID(sectionID);
+		
+		// set elementID
+		elementID = pageIdArray[pageIdArray.length - 1].trim();
+		
+		// set current page
+		currentPage =  getCurrentPage(sectionPageID);
 	}
+//	else
+//	{
+//		// set the sectionID
+//		sectionID = gherkinSectionID;
+//		
+//		// set the sectionPageID
+//		sectionPageID = gherkinSectionID;
+//		
+//		// set objectID
+//		objectID = null;	
+//		
+//		// set elementID
+//		elementID = sectionPageID;
+//	}
+
+	 // set objectID to the super class
+	 currentPage.setObjectID(objectID);
+	 
+	 //System.out.println("Current Page                = " + pageID);
+	 System.out.println("Gherkin Statement           = When user clicks on the " + "\"" + gherkinSectionID +"\"" + " section link");
+	 System.out.println("Current SectionID           = " + sectionID);
+	 System.out.println("Section Link to be clicked  = " + targetElement(elementID));
+	 //targetElement(elementID);
+	 System.out.println("=============================================");
+
+}
 
 	@Step
 	public void verifies_that_all_expected_elmenets_are_dispayed() throws Throwable 
@@ -253,11 +315,22 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
         }
 	}
 
-
     public void error_Element_is_Not_On_Page(String element) {
 	   {
 		  System.err.println("  **** FAILED:   Element " + "\"" + element + "\"" + " is NOT FOUND ...");
 		  System.out.println("  ============================================");
 	    }
    }
+    
+    public boolean isElementInTableofIsaObject(String elementID)
+    {
+    	//boolean returnValue = false;
+		if(tableofIsaObjects.mapTable.containsKey(elementID.trim().toLowerCase()))
+			return true;
+		else
+		{
+			System.err.println("Element " + "\"" + elementID + "\"" + " NOT FOUND in table tableofIsaObjects!!!");
+		    return false;
+		}
+    }
 }

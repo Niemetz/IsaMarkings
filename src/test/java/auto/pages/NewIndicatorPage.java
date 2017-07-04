@@ -16,6 +16,8 @@ public class NewIndicatorPage extends AmazonBasePageObject {
 		// This is a section link that is NOT part of "ISA Markings" section links
 		mapTable.put("Responsible Entity".toLowerCase(), "//indicator/main/Responsible Entity link");
 		
+		mapTable.put("ISA Markings for Indicator".toLowerCase(), "//indicator Main Page/ISA Markings for Indicator/Section Link");
+		
 		mapTable.put("Page Unique Element".toLowerCase(), "//Page Unique Element/on/New Indicator/Page");
 	}
 }

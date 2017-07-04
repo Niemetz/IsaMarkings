@@ -8,10 +8,10 @@ public class IsaMarkingsForXField extends AmazonBasePageObject {
 		mapTable.put("field A".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/field A");
 		mapTable.put("field B".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/field B");
 		mapTable.put("field C".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/field C");
-		mapTable.put("policies".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/policies link");
-		mapTable.put("control set".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/control set link");
-		mapTable.put("further sharing".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/further sharing link");
-		mapTable.put("responsible entity".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/responsible entity link");
-		mapTable.put("Page Unique Element".toLowerCase(), "//ISA/Makings/For/&objectID&/Field/Section");
+		mapTable.put("policies".toLowerCase(), "//ISA/Makings/For/&objectID&/policies link");
+		mapTable.put("control set".toLowerCase(), "//ISA/Makings/For/&objectID&/control set link");
+		mapTable.put("confidence".toLowerCase(), "//ISA/Makings/For/&objectID&/Confidence link");
+		mapTable.put("responsible entity".toLowerCase(), "//ISA/Makings/For/&objectID&/responsible entity link");
+		mapTable.put("Page Unique Element".toLowerCase(), "//ISA/Makings/For/&objectID&/policies link");
 	}
 }

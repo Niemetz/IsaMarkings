@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TableofIsaObjects {
-	private static final Map<String, String> mapTable = new HashMap<>();
+	public Map<String, String> mapTable = new HashMap<>();
 	String objectKey  = null;
 	public TableofIsaObjects()
 	{
@@ -21,13 +21,13 @@ public class TableofIsaObjects {
 	}
 	public String getObjectID(String tempOjectID)
 	{  
-		objectKey = tempOjectID;
-		return mapTable.get(objectKey.toLowerCase()).split("\\|")[0].trim();
+		objectKey = tempOjectID.trim().toLowerCase();
+		return mapTable.get(objectKey).split("\\|")[0].trim();
 	}
 	
 	public String getObjecType(String tempOjectID)
 	{  
-		objectKey = tempOjectID;
-		return mapTable.get(objectKey.toLowerCase()).split("\\|")[1].trim();
+		objectKey = tempOjectID.trim().toLowerCase();
+		return mapTable.get(objectKey).split("\\|")[1].trim();
 	}
 }
