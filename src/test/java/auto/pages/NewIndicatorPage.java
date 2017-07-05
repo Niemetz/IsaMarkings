@@ -4,20 +4,20 @@ public class NewIndicatorPage extends AmazonBasePageObject {
 	public NewIndicatorPage()
 	{
 		mapTable.clear();
-		mapTable.put("title".toLowerCase(), "//indicator/main//Title/field");
-		mapTable.put("custom isa markings button by the title field".toLowerCase(), "//indicator/main/isa marking button/by the/title field");
+		mapTable.put("title".toLowerCase(), "/Indicator Page/Title field");
+		mapTable.put("custom isa markings button by the title field".toLowerCase(), "/Indicator Page/isa marking button by the title field");
 		
 		mapTable.put("description".toLowerCase(), "//indicator/main//Description//field");
-		mapTable.put("custom isa markings button by the description field".toLowerCase(), "//indicator/main/isa marking button/by the/description field");
+		mapTable.put("custom isa markings button by the description field".toLowerCase(), "/Indicator Page/isa marking button by the description field");
 
 		mapTable.put("indicator type".toLowerCase(), "//indicator/main/Indicator Type/field|dynamic");
-		mapTable.put("custom isa markings button by the indicator type field".toLowerCase(), "//indicator/main/isa marking button/by the/indicator type field");
+		mapTable.put("custom isa markings button by the indicator type field".toLowerCase(), "//Indicator Page/isa marking button by the indicator type field");
 
 		// This is a section link that is NOT part of "ISA Markings" section links
-		mapTable.put("Responsible Entity".toLowerCase(), "//indicator/main/Responsible Entity link");
+		mapTable.put("Responsible Entity".toLowerCase(), "/Indicator Page//Responsible Entity link");
 		
-		mapTable.put("ISA Markings for Indicator".toLowerCase(), "//indicator Main Page/ISA Markings for Indicator/Section Link");
+		mapTable.put("ISA Markings for Indicator".toLowerCase(), "//Indicator Page/ISA Markings for Indicator section link");
 		
-		mapTable.put("Page Unique Element".toLowerCase(), "//Page Unique Element/on/New Indicator/Page");
+		mapTable.put("Page Unique Element".toLowerCase(), "//Indicator Page/Page Unique Element/");
 	}
 }

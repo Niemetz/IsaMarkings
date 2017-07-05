@@ -28,18 +28,16 @@ public class TableOfAllPages extends ScenarioSteps {
 		appPages.put("new package", "auto.pages.NewPackagePage");
 		appPages.put("package.main", "auto.pages.PackageMain");
 		
-        // ISA MArkings common templates 
+        // ISA Markings for X field templates
 		appPages.put("isa markings for x field", "auto.pages.IsaMarkingsForXField");
+		appPages.put("isa markings for x field.policies", "auto.pages.PoliciesForXField");
+		appPages.put("isa markings for x field.control set", "auto.pages.ControlSetForXField");
 		
-		appPages.put("isa markings for x field: control set", "auto.pages.ControlSetForXField");
-		appPages.put("isa markings for x field: policies", "auto.pages.PoliciesForXField");
-		appPages.put("isa markings for x field: further sharing", "auto.pages.FurtherSharingForXField");
-		
+		// ISA Markings for X templates
 		appPages.put("isa markings for x", "auto.pages.IsaMarkingsForX");
-		
-		appPages.put("isa markings for x: policies", "auto.pages.PoliciesForX");
-		appPages.put("isa markings for x: further sharing", "auto.pages.FurtherSharingForX");
-		appPages.put("isa markings for x: control set", "auto.pages.ControlSetForX");
+		appPages.put("isa markings for x.policies", "auto.pages.PoliciesForX");
+		appPages.put("isa markings for x.control set", "auto.pages.ControlSetForX");
+
 		appPages.put("subsectionx", "auto.pages.SubSectionX");
 
 	}

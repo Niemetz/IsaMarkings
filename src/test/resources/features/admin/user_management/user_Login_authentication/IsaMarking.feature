@@ -22,14 +22,19 @@ Scenario: Amazon User Login Authentication
     
     ####################################
     # Note: Which ISA Markings main section the user clicks on?
-    # When user clicks on the "Description.Policies" section link 
     # When user clicks on the "ISA Markings for Indicator" section link
+     When user clicks on the "ISA Markings for Description field.Policies" section link 
     
     ####################################
     # Note: Which ISA Markings section user <lands on|should see> ?
-    # Then user lands on the "Description.Policies" section
+    # Then user lands on the "ISA Markings for Indicator" section
+    # Then user lands on the "ISA Markings for Indicator.Policies" section
+    
+    # Then user lands on the "ISA Markings for Description field" section
+    # Then user lands on the "ISA Markings for Description field.Policies" section
+
     # Then user lands on the "Description.Policies.Further Sharing" section
-    # Then user lands on the "Indicator.Policies" section
+
     # Then user should see the "SubSectionX" section
     
     ####################################
