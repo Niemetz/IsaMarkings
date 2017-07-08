@@ -9,25 +9,67 @@ public class TableofIsaObjects {
 	public TableofIsaObjects()
 	{
 		// Object level
-		mapTable.put("indicator".toLowerCase(), "indicator|object");
-		mapTable.put("package".toLowerCase(), "package|object");
+		// The properties are in this order:
+		// sectionPageID | objectID
 		
-		// field level
-		mapTable.put("title".toLowerCase(), "title|field");
-		mapTable.put("description".toLowerCase(), "description|field");
-		mapTable.put("indicator type".toLowerCase(), "indicator_type|field");
-		mapTable.put("address observable".toLowerCase(), "address|field");
-		mapTable.put("further sharing".toLowerCase(), "further_sharing|field");
-	}
-	public String getObjectID(String tempOjectID)
-	{  
-		objectKey = tempOjectID.trim().toLowerCase();
-		return mapTable.get(objectKey).split("\\|")[0].trim();
+		// Indicator Object
+		mapTable.put("isa markings for indicator".toLowerCase(), "isa markings for x|indicator");
+		mapTable.put("isa markings for indicator.policies".toLowerCase(), "isa markings for x.policies|indicator");
+		mapTable.put("isa markings for indicator.control set".toLowerCase(), "isa markings for x.control set|indicator");
+		
+		// Package Object
+		mapTable.put("isa markings for package".toLowerCase(), "isa markings for x|package");
+		mapTable.put("isa markings for package.policies".toLowerCase(), "isa markings for x.package|package");
+		mapTable.put("isa markings for package.control set".toLowerCase(), "isa markings for x.control set|package");
+		
+		// Title field
+		mapTable.put("isa markings for title field".toLowerCase(), "isa markings for x field|title");
+		mapTable.put("isa markings for title field.policies".toLowerCase(), "isa markings for x field.policies|title");
+		mapTable.put("isa markings for title field.control set".toLowerCase(), "isa markings for x field.control set|title");
+		
+		// Description field
+		mapTable.put("isa markings for description field".toLowerCase(), "isa markings for x field|description");
+		mapTable.put("isa markings for description field.policies".toLowerCase(), "isa markings for x field.policies|description");
+		mapTable.put("isa markings for description field.control set".toLowerCase(), "isa markings for x field.control set|description");
+
 	}
 	
-	public String getObjecType(String tempOjectID)
-	{  
-		objectKey = tempOjectID.trim().toLowerCase();
-		return mapTable.get(objectKey).split("\\|")[1].trim();
+	public boolean isSectionInTheTable(String gherkinSectionID)
+	{
+		if(mapTable.containsKey(gherkinSectionID.trim().toLowerCase()))
+			return true;
+		else
+		{
+			System.err.println("ERROR: Section " + "\"" + gherkinSectionID + "\"" + " NOT FOUND in the TableOfIsaObjects!!!");
+		    return false;
+		}
 	}
+	
+	
+	public String getSectionID(String gherkinSectionID)
+	{  
+		return gherkinSectionID.split("\\.")[0];
+	}
+	
+	public String getSectionPageID(String gherkinSectionID)
+	{  
+		if (gherkinSectionID.contains("."))
+		   return mapTable.get(gherkinSectionID.toLowerCase()).split("\\|")[0].trim();
+		else
+			return mapTable.get(gherkinSectionID.toLowerCase()).split("\\|")[0].trim().split("\\.")[0];
+	}
+	
+	public String getObjectID(String gherkinSectionID)
+	{  
+		return mapTable.get(gherkinSectionID.toLowerCase()).split("\\|")[1].trim();
+	}
+	
+	public String getElementID(String gherkinSectionID)
+	{  
+		String[] tempArray = gherkinSectionID.split("\\.");
+		
+		return tempArray[tempArray.length-1].toLowerCase();
+	}
+	
+	
 }

@@ -49,7 +49,7 @@ public class AmazonBasePageObject extends PageObject
 				{
 					error_Element_is_Not_On_Page(entry.getKey());
 		        }
-           }
+            }
 	    }
      }
 

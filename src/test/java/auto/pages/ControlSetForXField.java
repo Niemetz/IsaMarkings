@@ -5,9 +5,9 @@ public class ControlSetForXField extends AmazonBasePageObject {
 	{
 		mapTable.clear();
 		//System.out.println("I am in the class => ControlSetForXField");
-		mapTable.put("Sign in".toLowerCase(), "//Control/Set/For/&objectID&/Field-#signInSubmit");
-		mapTable.put("Email".toLowerCase(), "//Control/Set/For/&objectID&/Field-#ap_email");
-		mapTable.put("Password".toLowerCase(), "//Control/Set/For/&objectID&/Field-#ap_password");
-		mapTable.put("Page Unique Element".toLowerCase(), "//Control/Set/For/&objectID&/Field-#signInSubmit");
+		mapTable.put("Sign in".toLowerCase(), "//ISA Markings for &objectID& Field/-#signInSubmit");
+		mapTable.put("Email".toLowerCase(), "///ISA Markings for &objectID& Field/-#ap_email");
+		mapTable.put("Password".toLowerCase(), "//ISA Markings for &objectID& Field/-#ap_password");
+		mapTable.put("Page Unique Element".toLowerCase(), "//ISA Markings for &objectID& Field/Control set section/Page Unique Element");
 	}
 }

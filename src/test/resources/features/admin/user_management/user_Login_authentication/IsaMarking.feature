@@ -10,33 +10,33 @@ Scenario: Amazon User Login Authentication
     Given user navigates to Amazon "Home" website
     Then user lands on the "New Indicator" page
     
+    # DONE
     ####################################
     # Note: Which main ISA Markings section the user is at?
     #Given user is at the "Indicator.Main" section 
-    #Given user is at the "Description.Policies" section
+    #Given user is at the "ISA Markings for Description field" section
     #Given user is at the "ISA Markings for Indicator" section
     
+    # DONE
     ####################################
     # Note: Which ISA Markings button (at field level) the user clicks on?
     # When user clicks on the "Custom ISA Markings" button by the "Description" field
     
-    ####################################
-    # Note: Which ISA Markings main section the user clicks on?
-    # When user clicks on the "ISA Markings for Indicator" section link
-     When user clicks on the "ISA Markings for Description field.Policies" section link 
-    
+    # DONE
     ####################################
     # Note: Which ISA Markings section user <lands on|should see> ?
     # Then user lands on the "ISA Markings for Indicator" section
     # Then user lands on the "ISA Markings for Indicator.Policies" section
-    
     # Then user lands on the "ISA Markings for Description field" section
-    # Then user lands on the "ISA Markings for Description field.Policies" section
-
-    # Then user lands on the "Description.Policies.Further Sharing" section
-
+     Then user lands on the "ISA Markings for Description field.control set" section
     # Then user should see the "SubSectionX" section
     
+    # DONE
+    ####################################
+    # Note: Which ISA Markings main section link the user clicks on?
+    # When user clicks on the "ISA Markings for Indicator" section link
+    # When user clicks on the "ISA Markings for Description field.Policies" section link 
+     
     ####################################
     # And user verifies that all expected elmenets are dispayed
     # And user clicks on the "Indicator Type" field
