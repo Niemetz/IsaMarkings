@@ -69,16 +69,16 @@ public class EndUserSteps extends ScenarioSteps {
 	}
 	
 	// Ghekin statment = When user clicks on the "Custom ISA Markings" button by the 'Title" field
-	public void clicks_on_the_button_by_the_field(String gherkinElementID, String gherFieldID) throws Throwable 
+	public void clicks_on_the_button_by_the_field_X(String gherkinElementID, String gherFieldID) throws Throwable 
 	{
 		// set elementID
         elementID = gherkinElementID + " button by the " +  gherFieldID + " field";
-        
+		 
    	    System.out.println("Current Page          = " + pageID);
         System.out.println("Gherkin Statement     = user clicks on the " +  "\"" +gherkinElementID + "\"" + " button by the " +  "\""+ gherFieldID + "\"" + " field");
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
 	    System.out.println("=============================================");
-	    //currentPage.getElement(gherkinElement).click();
+	    //targetElement(elementID).click();
 	}
 
     // 1 - Given user is at the "X" section 
@@ -88,7 +88,7 @@ public class EndUserSteps extends ScenarioSteps {
 		sectionPageID = gherkinSectionID;
 		objectID = null;
 		
-		if(gherkinSectionID.contains("ISA Markings for") && tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
+		if(tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
 		{
 			sectionID = gherkinSectionID.toLowerCase();
 			sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
@@ -113,7 +113,7 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 	sectionPageID = gherkinSectionID;
 	objectID = null;
 	
-	if(gherkinSectionID.contains("ISA Markings for") && tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
+	if(tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
 	{
 		//sectionID = gherkinSectionID.toLowerCase();
 		sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
@@ -148,7 +148,7 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
 }
 
 // Ghekin statment =  When user clicks on the "X.Y" section link
-public void clicks_on_the_section_link(String gherkinSectionID) throws Throwable 
+public void clicks_on_the_section_link_X(String gherkinSectionID) throws Throwable 
 {
 	if(tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
 	{

@@ -29,7 +29,7 @@ public class DefinitionSteps {
 	// Step for Isa marking
 	@Then("^user clicks on the \"([^\"]*)\" button by the \"([^\"]*)\" field$")
 	public void user_clicks_on_the_button_by_the_field(String gherkinElement, String fieldName) throws Throwable {
-		user.clicks_on_the_button_by_the_field(gherkinElement, fieldName);
+		user.clicks_on_the_button_by_the_field_X(gherkinElement, fieldName);
 	}
 
 	 @Step
@@ -54,7 +54,7 @@ public class DefinitionSteps {
 	@When("^user clicks on the \"([^\"]*)\" section link$")
 	public void user_clicks_on_the_section_link(String gherkinSectionLinkID) throws Throwable 
 	{
-          user.clicks_on_the_section_link(gherkinSectionLinkID);
+          user.clicks_on_the_section_link_X(gherkinSectionLinkID);
 	}
 	
 	@Step

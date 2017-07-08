@@ -20,7 +20,7 @@ Scenario: Amazon User Login Authentication
     # DONE
     ####################################
     # Note: Which ISA Markings button (at field level) the user clicks on?
-    # When user clicks on the "Custom ISA Markings" button by the "Description" field
+     When user clicks on the "Custom ISA Markings" button by the "Description" field
     
     # DONE
     ####################################
@@ -28,7 +28,7 @@ Scenario: Amazon User Login Authentication
     # Then user lands on the "ISA Markings for Indicator" section
     # Then user lands on the "ISA Markings for Indicator.Policies" section
     # Then user lands on the "ISA Markings for Description field" section
-     Then user lands on the "ISA Markings for Description field.control set" section
+    # Then user lands on the "ISA Markings for Description field.control set" section
     # Then user should see the "SubSectionX" section
     
     # DONE
