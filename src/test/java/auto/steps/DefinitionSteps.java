@@ -38,17 +38,19 @@ public class DefinitionSteps {
 	public void user_lands_on_page_X(String gherkinPageName) throws Throwable {
 		user.lands_on_page_X(gherkinPageName);
 	}
-	 
-	 @Given("^user is at the \"([^\"]*)\" section$")
-	 public void user_is_at_the_section(String gherkinSectionID) throws Throwable {
-            user.is_at_the_section_X(gherkinSectionID);
-	 }
 
-	//@Then("^user (?:lands on the|should see the|.*?) \"([^\"]*)\" section$")
-	@Then("^user (?:should see|lands on) the \"([^\"]*)\" section$")
+	// 1 - @Then("^user (?:lands on the|should see the|.*?) \"([^\"]*)\" section$")
+	// 2 - Given user is at the "X" section
+	@Then("^user (?:should see|lands on|is at|is on) the \"([^\"]*)\" section$")
 	public void user_lands_on_the_section_X(String gherkinSectionID) throws Throwable 
 	{
         user.lands_on_the_section_X(gherkinSectionID);
+	}
+	
+	@Then("^user (?:should see|lands on|is at|is on) the \"([^\"]*)\" sub-section$")
+	public void user_should_see_the_sub_section(String gherkinSubSectionID) throws Throwable 
+	{
+		user.lands_on_the_sub_section_X(gherkinSubSectionID);
 	}
 	
 	@When("^user clicks on the \"([^\"]*)\" section link$")

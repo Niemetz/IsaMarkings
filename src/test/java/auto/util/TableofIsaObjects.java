@@ -43,7 +43,8 @@ public class TableofIsaObjects {
 		}
 		else if((org.apache.commons.lang3.StringUtils.countMatches(gherkinSectionID,".") > 1))
 		{
-			System.err.println("ERROR: Section Name " + "\"" + gherkinSectionID + "\"" + " is an invalid section!!!\n");
+			System.err.println("ERROR: Section Name " + "\"" + gherkinSectionID + "\"" + " is an invalid input!!!\n");
+			System.err.println("The correct format is <Section X|.| SubSection Y>, for exmaple: ISA Markigs for Inidicator.Policies");
 			return this.objectID = null;
 		}
 		else
@@ -77,6 +78,5 @@ public class TableofIsaObjects {
 		
 		return tempArray[tempArray.length-1].toLowerCase();
 	}
-	
-	
+
 }
