@@ -3,10 +3,11 @@ package auto.util;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TableofIsaObjects {
+public class TableofIsaObjects_BASELINE {
 	public Map<String, String> mapTable = new HashMap<>();
 	String objectKey  = null;
-	public TableofIsaObjects()
+	boolean returnValue ;
+	public TableofIsaObjects_BASELINE()
 	{
 		// Object level
 		// The properties are in this order:
@@ -36,13 +37,9 @@ public class TableofIsaObjects {
 	
 	public boolean isSectionInTheTable(String gherkinSectionID)
 	{
-		if(mapTable.containsKey(gherkinSectionID.trim().toLowerCase()))
-			return true;
-		else
-		{
-			System.err.println("ERROR: Section " + "\"" + gherkinSectionID + "\"" + " NOT FOUND in the TableOfIsaObjects!!!");
-		    return false;
-		}
+		if(!(returnValue = mapTable.containsKey(gherkinSectionID.trim().toLowerCase()) ? true : false))
+		  System.err.println("ERROR: Section " + "\"" + gherkinSectionID + "\"" + " NOT FOUND in the TableOfIsaObjects!!!");
+		return returnValue;
 	}
 	
 	

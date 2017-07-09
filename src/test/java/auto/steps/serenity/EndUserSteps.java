@@ -2,6 +2,7 @@ package auto.steps.serenity;
 
 import java.util.Map.Entry;
 
+import org.jruby.RubyProcess.Sys;
 import org.junit.Assert;
 
 //import java.util.HashMap;
@@ -88,11 +89,11 @@ public class EndUserSteps extends ScenarioSteps {
 		sectionPageID = gherkinSectionID;
 		objectID = null;
 		
-		if(tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
-		{
-			sectionID = gherkinSectionID.toLowerCase();
-			sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
+		if(gherkinSectionID.toLowerCase().contains("isa markings for"))
+		{			
 			objectID = tableofIsaObjects.getObjectID(gherkinSectionID);
+			sectionID = tableofIsaObjects.getSectionID(gherkinSectionID);
+			sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
 		}	
 		 // set current page
 		 currentPage =  getCurrentPage(sectionPageID);
@@ -101,7 +102,7 @@ public class EndUserSteps extends ScenarioSteps {
 		 
 		 System.out.println("Gherkin Statement           = Given user is at the " + "\"" + sectionPageID +"\"" + " section");
 		 System.out.println("Section PageID to be loaded = " + sectionPageID );
-		 System.out.println("Current SectionID           = " + sectionID);
+		 System.out.println("Loaded...current SectionID  = " + sectionID);
 		 System.out.println("Section's unique element    = " + targetElement("Page Unique Element"));
 		 //targetElement("Page Unique Element");
 		 System.out.println("=============================================");
@@ -110,14 +111,15 @@ public class EndUserSteps extends ScenarioSteps {
 // Gherkin Statement: Then user lands on the "ISA Markings for X field" section
 public void lands_on_the_section_X(String gherkinSectionID) throws Throwable 
 {
+	//sectionID = gherkinSectionID.toLowerCase();
 	sectionPageID = gherkinSectionID;
 	objectID = null;
 	
-	if(tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
+	if(gherkinSectionID.toLowerCase().contains("isa markings for"))
 	{
-		//sectionID = gherkinSectionID.toLowerCase();
-		sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
 		objectID = tableofIsaObjects.getObjectID(gherkinSectionID);
+		sectionID = gherkinSectionID.toLowerCase();
+		sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
 	}	
 	 // set current page
 	 currentPage =  getCurrentPage(sectionPageID);
@@ -127,6 +129,7 @@ public void lands_on_the_section_X(String gherkinSectionID) throws Throwable
 	 System.out.println("Current Page                = " + pageID);
 	 System.out.println("Gherkin Statement           = user lands on the " + "\"" + gherkinSectionID +"\"" + " section");
 	 System.out.println("Section PageID to be loaded = " + sectionPageID );
+	 System.out.println("Loaded...current Section ID = " + sectionID);
 	 System.out.println("Section's unique element    = " + targetElement("Page Unique Element"));
 	 System.out.println("=============================================");
 }
@@ -150,20 +153,50 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
 // Ghekin statment =  When user clicks on the "X.Y" section link
 public void clicks_on_the_section_link_X(String gherkinSectionID) throws Throwable 
 {
-	if(tableofIsaObjects.isSectionInTheTable(gherkinSectionID))
+
+	// Exmaple: ISA Markings for Indicator
+	if(!gherkinSectionID.toLowerCase().contains("field") && !gherkinSectionID.toLowerCase().contains("."))
 	{
-	 // set current page
-	 if(gherkinSectionID.contains("."))	
-	    currentPage =  getCurrentPage(tableofIsaObjects.getSectionPageID(gherkinSectionID));
-	 
-	 // set objectID to the super class
-	 currentPage.setObjectID(tableofIsaObjects.getObjectID(gherkinSectionID));
-	 
+		sectionPageID = pageID;
+	    elementID = gherkinSectionID;
+	}    
+	
+	// Exmaple: ISA Markings for Indicator.Policies
+	if(!gherkinSectionID.toLowerCase().contains("field") 
+	  && gherkinSectionID.toLowerCase().contains("."))
+	{
+		objectID = tableofIsaObjects.getObjectID(gherkinSectionID);
+		sectionPageID = "isa markings for x"; 
+	    elementID = tableofIsaObjects.getElementID(gherkinSectionID);  
+	}
+	   
+	// Exmaple: ISA Markings for Description field
+	if(gherkinSectionID.toLowerCase().contains("field") 
+	  && !gherkinSectionID.toLowerCase().contains("."))
+	{
+		objectID = tableofIsaObjects.getObjectID(gherkinSectionID).trim();
+		sectionPageID = "isa markings for x field";    
+	    elementID = "isa markings for x field";
+	}
+	
+	// Example: "ISA Markings for Description field.Policies" section link 
+	if(gherkinSectionID.toLowerCase().contains("field") 
+	  && gherkinSectionID.toLowerCase().contains("."))
+	{
+		objectID = tableofIsaObjects.getObjectID(gherkinSectionID);
+		sectionPageID = "isa markings for x field";
+	    elementID = tableofIsaObjects.getElementID(gherkinSectionID);   
+	}
+
+    // set currentPage
+	currentPage = getCurrentPage(sectionPageID);
+	// set objectID to the super class
+	currentPage.setObjectID(objectID);
+	
 	 System.out.println("Gherkin Statement           = When user clicks on the " + "\"" + gherkinSectionID +"\"" + " section link");
-	 System.out.println("Section Link to be clicked  = " + targetElement(tableofIsaObjects.getElementID(gherkinSectionID)));
+	 System.out.println("Section Link to be clicked  = " + targetElement(elementID));
 	 System.out.println("=============================================");
 	 //targetElement(tableofIsaObjects.getElementID(gherkinSectionID)).click();
-	}	
 }
 
 	@Step
