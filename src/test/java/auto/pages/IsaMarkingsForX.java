@@ -5,13 +5,14 @@ public class IsaMarkingsForX extends AmazonBasePageObject {
 	{
 		mapTable.clear();
 		//System.out.println("I am in the class => IsaMarkingsForX");
-		mapTable.put("field A".toLowerCase(), "//ISA Makings for &objectID&  field section/field A");
-		mapTable.put("field B".toLowerCase(), "//ISA Makings for &objectID& field section/field B");
-		mapTable.put("field C".toLowerCase(), "//ISA Makings for &objectID& field section/field C");
-		mapTable.put("policies".toLowerCase(), "//ISA Makings for &objectID& field section/policies link");
-		mapTable.put("control set".toLowerCase(), "//ISA Makings for &objectID& field section/control set link");
-		mapTable.put("confidence".toLowerCase(), "//ISA Makings for &objectID& field section/Confidence link");
-		mapTable.put("responsible entity".toLowerCase(), "//ISA Makings for &objectID& field section/responsible entity link");
-		mapTable.put("Page Unique Element".toLowerCase(), "//ISA Makings for &objectID& field section/Page Unique Element");
+		mapTable.put("field A".toLowerCase(), "//ISA Makings for &objectID&  /field A");
+		mapTable.put("field B".toLowerCase(), "//ISA Makings for &objectID& /field B");
+		mapTable.put("field C".toLowerCase(), "//ISA Makings for &objectID& /field C");
+		mapTable.put("isa markings for x".toLowerCase(), "//ISA Makings for &objectID& link");
+		mapTable.put("policies".toLowerCase(), "//ISA Makings for &objectID& /policies link");
+		mapTable.put("control set".toLowerCase(), "//ISA Makings for &objectID& /control set link");
+		mapTable.put("confidence".toLowerCase(), "//ISA Makings for &objectID& /Confidence link");
+		mapTable.put("responsible entity".toLowerCase(), "//ISA Makings for &objectID& /responsible entity link");
+		mapTable.put("Page Unique Element".toLowerCase(), "//ISA Makings for &objectID& /Page Unique Element");
 	}
 }

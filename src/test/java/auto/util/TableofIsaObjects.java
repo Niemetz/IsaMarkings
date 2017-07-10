@@ -60,23 +60,54 @@ public class TableofIsaObjects {
 	{  
 		String returnSectionPageID = null;
 		
+		// Exmaple: "ISA Markings for Indicator"
 		if(!gherkinSectionID.contains("field") && !gherkinSectionID.contains("."))
 			returnSectionPageID =  "isa markings for x";
+		// Exmaple: "ISA Markings for Indicator.Policies"
 		else if (!gherkinSectionID.contains("field") && gherkinSectionID.contains("."))
 			returnSectionPageID =  "isa markings for x." + gherkinSectionID.split("\\.")[1].trim().toLowerCase();
+		// Exmaple: "ISA Markings for Description field"
 		else if (gherkinSectionID.contains("field") && !gherkinSectionID.contains("."))
 			returnSectionPageID =  "isa markings for x field";
+		// Exmaple: "ISA Markings for Description field.Policies"
 		else if (gherkinSectionID.contains("field") && gherkinSectionID.contains("."))
 			returnSectionPageID =  "isa markings for x field." + gherkinSectionID.split("\\.")[1].trim().toLowerCase();
 			
 		return returnSectionPageID;
 	}
+	
+	public String getCurrentSectionPageID(String gherkinSectionID)
+	{  
+		String returnCurrentSectionPageID = null;
+		
+		// Exmaple: "ISA Markings for Indicator"
+		if(!gherkinSectionID.contains("field"))
+			returnCurrentSectionPageID =  "isa markings for x";
+		// Exmaple: "ISA Markings for Indicator.Policies"
+		else if (gherkinSectionID.contains("field") )
+			returnCurrentSectionPageID =  "isa markings for x field" ;
+			
+		return returnCurrentSectionPageID;
+	}
+	
 		
 	public String getElementID(String gherkinSectionID)
 	{  
-		String[] tempArray = gherkinSectionID.split("\\.");
+		String returnedElement = null;
+		//String[] tempArray = gherkinSectionID.split("\\.");
 		
-		return tempArray[tempArray.length-1].toLowerCase();
+		if(!gherkinSectionID.toLowerCase().contains("field")  
+		   && !gherkinSectionID.toLowerCase().contains("."))
+			returnedElement = "isa markings for x";
+		
+		else if(gherkinSectionID.toLowerCase().contains("field")  
+				   && !gherkinSectionID.toLowerCase().contains("."))
+					returnedElement = "isa markings for x field";
+				
+		else if(gherkinSectionID.toLowerCase().contains("."))
+		        returnedElement = gherkinSectionID.split("\\.")[1];
+
+		return returnedElement;
 	}
 
 }

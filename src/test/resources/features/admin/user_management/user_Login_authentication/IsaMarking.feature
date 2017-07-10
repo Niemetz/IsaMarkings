@@ -34,7 +34,7 @@ Scenario: Amazon User Login Authentication
 
     # DONE
     ####################################
-    # Note: Which ISA Markings main section link the user clicks on?
+    # Note: Which ISA Markings main "section link" the user clicks on?
     # When user clicks on the "ISA Markings for Indicator" section link
     # When user clicks on the "ISA Markings for Indicator.Policies" section link 
      When user clicks on the "ISA Markings for Description field" section link
