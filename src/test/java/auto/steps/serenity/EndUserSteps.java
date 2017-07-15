@@ -64,7 +64,7 @@ public class EndUserSteps extends ScenarioSteps {
 		return currentPage.getElement(gherkinElement);
 	}
 	// This is where the a page, a section or a sub-section is loaded.
-	public void clicks_on_elementX(String gherkinElement) throws Throwable {
+	public void clicks_on_element_X(String gherkinElement) throws Throwable {
 		System.out.println("Gherkin statement: And user clicks on the X element");
 		System.out.println("user clicks on the Element = " + "|" + targetElement(gherkinElement) + "|");
 		
@@ -79,6 +79,7 @@ public class EndUserSteps extends ScenarioSteps {
 		 
    	    System.out.println("Current Page          = " + pageID);
         System.out.println("Gherkin Statement     = user clicks on the " +  "\"" +gherkinElementID + "\"" + " button by the " +  "\""+ gherFieldID + "\"" + " field");
+   	    System.out.println("Section's ObjectID    = N/A, because " + "\"" +  pageID + "\"" + " is not an ISA Markings section!");
 	    System.out.println("Element to be clicked = " + targetElement(elementID));
 	    System.out.println("=============================================");
 	    
@@ -91,7 +92,7 @@ public class EndUserSteps extends ScenarioSteps {
 	{
 		
 		sectionPageID = gherkinSectionID;
-		objectID = null;
+		objectID = "N/A, because " + "\"" +  gherkinSectionID + "\"" + " is not an ISA Markings section!";
 		
 		if(gherkinSectionID.toLowerCase().contains("isa markings for"))
 		{			
@@ -104,7 +105,7 @@ public class EndUserSteps extends ScenarioSteps {
 		 // set objectID to the super class
 		 currentPage.setObjectID(objectID);
 		 
-		 System.out.println("Gherkin Statement           = Given user is at the " + "\"" + sectionPageID +"\"" + " section");
+		 System.out.println("Gherkin Statement           = Given user |lands on|should see|is on|is at the " + "\"" + gherkinSectionID +"\"" + " section");
 		 System.out.println("Section PageID to be loaded = " + sectionPageID );
 		 if(!gherkinSectionID.toLowerCase().contains(".main"))
 		   System.out.println("Loaded...current SectionID  = " + sectionID);
@@ -126,9 +127,9 @@ public class EndUserSteps extends ScenarioSteps {
 	 currentPage.setObjectID(objectID);
 	 
 	 System.out.println("Current Page                   = " + pageID);
-	 System.out.println("Gherkin Statement              = Then user lands on the " + "\"" + gherkinSubSectionID +"\"" + " sub-section");
+	 System.out.println("Gherkin Statement              = Then user |lands on|should see|is on|is at the " + "\"" + gherkinSubSectionID +"\"" + " section");
 	 System.out.println("Current Section Page           = SectionID is NOT captured");
-	 System.out.println("Section's ObjectID             = ObjectID is NOT captured");
+	 System.out.println("Section's ObjectID             = ObjectID Is Not Captured because " + gherkinSubSectionID + " is not an ISA Markings section!");
 	 System.out.println("Sub-section's unique element   = " + targetElement("Page Unique Element"));
 	 System.out.println("Next Section Page to be loaded = " + sectionPageID );
 	 System.out.println("=============================================");
@@ -180,7 +181,6 @@ public void clicks_on_the_section_link_X(String gherkinSectionID) throws Throwab
 		 System.out.println("=============================================");
 
 		 //targetElement(elementID).click();
-
 }
 
 	@Step
