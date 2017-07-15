@@ -34,7 +34,7 @@ public class DefinitionSteps {
 
 	 @Step
 	//@Then("^user lands on the \"([^\"]*)\" page$")
-	@Then("^user (?:should see|lands on|is at|is on|.*?) the \"([^\"]*)\" page$")
+	@Then("^user (?:should see|lands on|is at|is on) the \"([^\"]*)\" (?:page|pulldown list)$")
 	public void user_lands_on_page_X(String gherkinPageName) throws Throwable {
 		user.lands_on_page_X(gherkinPageName);
 	}

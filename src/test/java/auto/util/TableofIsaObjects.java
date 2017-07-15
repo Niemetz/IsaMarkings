@@ -56,7 +56,7 @@ public class TableofIsaObjects {
 		return gherkinSectionID;
 	}
 	
-	public String getSectionPageID(String gherkinSectionID)
+	public String getNextSectionPageID(String gherkinSectionID)
 	{  
 		String returnSectionPageID = null;
 		
@@ -89,8 +89,7 @@ public class TableofIsaObjects {
 			
 		return returnCurrentSectionPageID;
 	}
-	
-		
+			
 	public String getElementID(String gherkinSectionID)
 	{  
 		String returnedElement = null;

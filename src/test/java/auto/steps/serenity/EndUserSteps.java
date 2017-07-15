@@ -66,7 +66,7 @@ public class EndUserSteps extends ScenarioSteps {
 	// This is where the a page, a section or a sub-section is loaded.
 	public void clicks_on_elementX(String gherkinElement) throws Throwable {
 		System.out.println("Gherkin statement: And user clicks on the X element");
-		System.out.println("user clicks on the Element = " + "|" + currentPage.getElement(gherkinElement) + "|");
+		System.out.println("user clicks on the Element = " + "|" + targetElement(gherkinElement) + "|");
 		
 		 //targetElement(gherkinElement).click();
 	}
@@ -97,7 +97,7 @@ public class EndUserSteps extends ScenarioSteps {
 		{			
 			objectID = tableofIsaObjects.getObjectID(gherkinSectionID);
 			sectionID = tableofIsaObjects.getSectionID(gherkinSectionID);
-			sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
+			sectionPageID = tableofIsaObjects.getNextSectionPageID(gherkinSectionID);
 		}	
 		 // set current page
 		 currentPage =  getCurrentPage(sectionPageID);
@@ -125,12 +125,12 @@ public class EndUserSteps extends ScenarioSteps {
 	 // set objectID to the super class
 	 currentPage.setObjectID(objectID);
 	 
-	 System.out.println("Current Page                = " + pageID);
-	 System.out.println("Gherkin Statement           = Then user lands on the " + "\"" + gherkinSubSectionID +"\"" + " sub-section (Note: sub-sectionID is NOT captured)");
-	 System.out.println("Section PageID to be loaded = " + sectionPageID );
-	 System.out.println("Loaded...current SectionID  = " + sectionID);
-	 System.out.println("Section's ObjectID          = " + objectID);
-	 System.out.println("Sub-section's unique element    = " + targetElement("Page Unique Element"));
+	 System.out.println("Current Page                   = " + pageID);
+	 System.out.println("Gherkin Statement              = Then user lands on the " + "\"" + gherkinSubSectionID +"\"" + " sub-section");
+	 System.out.println("Current Section Page           = SectionID is NOT captured");
+	 System.out.println("Section's ObjectID             = ObjectID is NOT captured");
+	 System.out.println("Sub-section's unique element   = " + targetElement("Page Unique Element"));
+	 System.out.println("Next Section Page to be loaded = " + sectionPageID );
 	 System.out.println("=============================================");
 
 	//targetElement("Page Unique Element");
@@ -156,27 +156,27 @@ public void lands_on_page_X(String gherkinPageID) throws Throwable
 // 2 - Ghekin statment =  When user clicks on the "ISA Markings for Indicator.Policies" section link
 public void clicks_on_the_section_link_X(String gherkinSectionID) throws Throwable 
 {
-        String currentsectionPageID = null;
+        //String currentsectionPageID = null;
        
 //	    if(gherkinSectionID.toLowerCase().contains("isa markings for"))
 //	      {
 			objectID = tableofIsaObjects.getObjectID(gherkinSectionID);
-			sectionPageID = tableofIsaObjects.getSectionPageID(gherkinSectionID);
-			currentsectionPageID = tableofIsaObjects.getCurrentSectionPageID(gherkinSectionID);
+			sectionPageID = tableofIsaObjects.getNextSectionPageID(gherkinSectionID);
+			sectionID = tableofIsaObjects.getCurrentSectionPageID(gherkinSectionID);
 		    elementID = tableofIsaObjects.getElementID(gherkinSectionID);
 //	      }
 
-
 	    // set currentPage
-		currentPage = getCurrentPage(currentsectionPageID);
+		currentPage = getCurrentPage(sectionID);
 		// set objectID to the super class
 		currentPage.setObjectID(objectID);
 		
-		 System.out.println("Gherkin Statement                      = When user clicks on the " + "\"" + gherkinSectionID +"\"" + " section link");
-		 System.out.println("current Section's PageID               = " + currentsectionPageID);
-		 System.out.println("Current ObjectID                       = " + objectID);
-		 System.out.println("Element to be clicked                  = " + elementID);
-		 System.out.println("Section Link to be clicked             = " + targetElement(elementID));
+		 System.out.println("Gherkin Statement             = When user clicks on the " + "\"" + gherkinSectionID +"\"" + " section link");
+		 System.out.println("current Section's PageID      = " + sectionID);
+		 System.out.println("Current ObjectID              = " + objectID);
+		 System.out.println("Element to be clicked         = " + elementID);
+		 System.out.println("Section Link to be clicked    = " + targetElement(elementID));
+		 System.out.println("Next Section Page to beloaded = " + sectionPageID);
 		 System.out.println("=============================================");
 
 		 //targetElement(elementID).click();
