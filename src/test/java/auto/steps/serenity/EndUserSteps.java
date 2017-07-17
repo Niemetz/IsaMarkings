@@ -129,7 +129,7 @@ public class EndUserSteps extends ScenarioSteps {
 	 System.out.println("Current Page                   = " + pageID);
 	 System.out.println("Gherkin Statement              = Then user |lands on|should see|is on|is at the " + "\"" + gherkinSubSectionID +"\"" + " section");
 	 System.out.println("Current Section Page           = SectionID is NOT captured");
-	 System.out.println("Section's ObjectID             = ObjectID Is Not Captured because " + gherkinSubSectionID + " is not an ISA Markings section!");
+	 System.out.println("Section's ObjectID             = NULL, because " +  "\"" +gherkinSubSectionID + "\"" + " is not an ISA Markings section!");
 	 System.out.println("Sub-section's unique element   = " + targetElement("Page Unique Element"));
 	 System.out.println("Next Section Page to be loaded = " + sectionPageID );
 	 System.out.println("=============================================");
