@@ -3,6 +3,8 @@ package auto.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jruby.RubyProcess.Sys;
+
 
 public class TableofIsaObjects {
 	public Map<String, String> mapTable = new HashMap<>();
@@ -11,30 +13,19 @@ public class TableofIsaObjects {
 	
 	public TableofIsaObjects()
 	{
-		// Objects
+		// Objects Level
 		mapTable.put("indicator".toLowerCase(), "indicator".toLowerCase());
 		mapTable.put("package".toLowerCase(), "package".toLowerCase());
 		
-		// fields
+		// Fields Level
 		mapTable.put("title".toLowerCase(), "title".toLowerCase());
 		mapTable.put("description".toLowerCase(), "description".toLowerCase());
 		mapTable.put("indicator type".toLowerCase(), "indicator_type".toLowerCase());
 	}
 
 	public String getObjectID(String gherkinSectionID)
-	{  
-		// Exmaple: ISA Marking for Indicator
-		if(!gherkinSectionID.contains("field")  && !gherkinSectionID.contains("."))
-			this.objectID = (gherkinSectionID.split("for")[1].trim()).toLowerCase();
-		// Exmaple: ISA Markings for Indicator.Policies
-		else if (!gherkinSectionID.contains("field") && gherkinSectionID.contains("."))
-			this.objectID = (gherkinSectionID.split("\\.")[0].trim().split("for")[1].trim()).toLowerCase();	
-		// Exmaple:  ISA Markings for Description field
-		else if (gherkinSectionID.contains("field")  && !gherkinSectionID.contains("."))
-			this.objectID = (gherkinSectionID.split("for")[1].split("field")[0].trim()).toLowerCase();	
-		// Exmaple:  ISA Markings for Description field.Policies
-		else if (gherkinSectionID.contains("field") && gherkinSectionID.contains("."))
-			this.objectID  = (gherkinSectionID.split("\\.")[0].trim().split("for")[1].trim().split("field")[0].trim()).toLowerCase();
+	{ 
+		this.objectID = (gherkinSectionID.split("\\.")[0]).split("for")[1].split("field")[0].trim().toLowerCase();
 
 		if(!(mapTable.containsKey(this.objectID)))
 		{
@@ -48,64 +39,25 @@ public class TableofIsaObjects {
 			return this.objectID = null;
 		}
 		else
-         return  this.objectID;
-	}
-	
-	public String getSectionID(String gherkinSectionID)
-	{  
-		return gherkinSectionID;
+         return  mapTable.get(this.objectID);
 	}
 	
 	public String getNextSectionPageID(String gherkinSectionID)
 	{  
-		String returnSectionPageID = null;
-		
-		// Exmaple: "ISA Markings for Indicator"
-		if(!gherkinSectionID.contains("field") && !gherkinSectionID.contains("."))
-			returnSectionPageID =  "isa markings for x";
-		// Exmaple: "ISA Markings for Indicator.Policies"
-		else if (!gherkinSectionID.contains("field") && gherkinSectionID.contains("."))
-			returnSectionPageID =  "isa markings for x." + gherkinSectionID.split("\\.")[1].trim().toLowerCase();
-		// Exmaple: "ISA Markings for Description field"
-		else if (gherkinSectionID.contains("field") && !gherkinSectionID.contains("."))
-			returnSectionPageID =  "isa markings for x field";
-		// Exmaple: "ISA Markings for Description field.Policies"
-		else if (gherkinSectionID.contains("field") && gherkinSectionID.contains("."))
-			returnSectionPageID =  "isa markings for x field." + gherkinSectionID.split("\\.")[1].trim().toLowerCase();
-			
-		return returnSectionPageID;
+		String replacedTarget = (gherkinSectionID.split("\\.")[0]).split("for")[1].split("field")[0].trim().toLowerCase();	
+		return gherkinSectionID.toLowerCase().replace(replacedTarget, "x");
 	}
 	
 	public String getCurrentSectionPageID(String gherkinSectionID)
-	{  
-		String returnCurrentSectionPageID = null;
-		
-		// Exmaple: "ISA Markings for Indicator"
-		if(!gherkinSectionID.contains("field"))
-			returnCurrentSectionPageID =  "isa markings for x";
-		// Exmaple: "ISA Markings for Indicator.Policies"
-		else if (gherkinSectionID.contains("field") )
-			returnCurrentSectionPageID =  "isa markings for x field" ;
-			
-		return returnCurrentSectionPageID;
+	{  	
+		return gherkinSectionID.toLowerCase().split("\\.")[0].replace(getObjectID(gherkinSectionID), "x");
 	}
 			
 	public String getElementID(String gherkinSectionID)
 	{  
-		String returnedElement = null;
-		//String[] tempArray = gherkinSectionID.split("\\.");
-		
-		if(!gherkinSectionID.toLowerCase().contains("field")  
-		   && !gherkinSectionID.toLowerCase().contains("."))
-			returnedElement = "isa markings for x";
-		
-		else if(gherkinSectionID.toLowerCase().contains("field")  
-				   && !gherkinSectionID.toLowerCase().contains("."))
-					returnedElement = "isa markings for x field";
-				
-		else if(gherkinSectionID.toLowerCase().contains("."))
-		        returnedElement = gherkinSectionID.split("\\.")[1];
-
+		String returnedElement = gherkinSectionID.toLowerCase().replace(getObjectID(gherkinSectionID), "x").trim();
+		if(gherkinSectionID.toLowerCase().contains("."))
+			returnedElement = gherkinSectionID.split("\\.")[1].trim();
 		return returnedElement;
 	}
 

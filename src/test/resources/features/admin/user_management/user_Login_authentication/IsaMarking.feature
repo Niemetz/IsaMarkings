@@ -1,11 +1,11 @@
 @version:Sprint-6.5.0-RC-1
 @version:GD-Release-6.5.0-RC-1
-Feature: Requirement ID = 80.3 An Amazon existing user is able to log on to his/her account
+Feature: User login authentication
          Acceptance Criteria:
          As an amazone existing cusomter
          I should have be able to log on to my account
          In order to purchase things that I like
-@Amazon-User-Login-Authentication
+@Amazon-User-Login-Authentication-Tag
 Scenario: Amazon User Login Authentication
     Given user navigates to Amazon "Home" website
     Then user lands on the "New Indicator" page
@@ -40,11 +40,11 @@ Scenario: Amazon User Login Authentication
     # When user clicks on the "ISA Markings for Indicator" section link
     # When user clicks on the "ISA Markings for Indicator.Policies" section link 
     # When user clicks on the "ISA Markings for Description field" section link
-     When user clicks on the "ISA Markings for Description field.Policies" section link 
+    # When user clicks on the "ISA Markings for Description field.Policies" section link 
     
     #DONE
     ####################################
-     Then user should see the "SubSectionX" sub-section
+    # Then user should see the "SubSectionX" sub-section
      
     ####################################
     # And user verifies that all expected elmenets are dispayed

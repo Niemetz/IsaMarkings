@@ -97,7 +97,7 @@ public class EndUserSteps extends ScenarioSteps {
 		if(gherkinSectionID.toLowerCase().contains("isa markings for"))
 		{			
 			objectID = tableofIsaObjects.getObjectID(gherkinSectionID);
-			sectionID = tableofIsaObjects.getSectionID(gherkinSectionID);
+			sectionID = gherkinSectionID;
 			sectionPageID = tableofIsaObjects.getNextSectionPageID(gherkinSectionID);
 		}	
 		 // set current page
