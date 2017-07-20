@@ -44,8 +44,7 @@ public class TableofIsaObjects {
 	
 	public String getNextSectionPageID(String gherkinSectionID)
 	{  
-		String replacedTarget = (gherkinSectionID.split("\\.")[0]).split("for")[1].split("field")[0].trim().toLowerCase();	
-		return gherkinSectionID.toLowerCase().replace(replacedTarget, "x");
+		return gherkinSectionID.toLowerCase().replace(getObjectID(gherkinSectionID), "x");
 	}
 	
 	public String getCurrentSectionPageID(String gherkinSectionID)

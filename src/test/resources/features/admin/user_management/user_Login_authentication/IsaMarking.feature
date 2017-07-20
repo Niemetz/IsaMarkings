@@ -40,7 +40,7 @@ Scenario: Amazon User Login Authentication
     # When user clicks on the "ISA Markings for Indicator" section link
     # When user clicks on the "ISA Markings for Indicator.Policies" section link 
     # When user clicks on the "ISA Markings for Description field" section link
-    # When user clicks on the "ISA Markings for Description field.Policies" section link 
+     When user clicks on the "ISA Markings for Description field.Policies" section link 
     
     #DONE
     ####################################
