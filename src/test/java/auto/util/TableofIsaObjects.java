@@ -57,7 +57,7 @@ public class TableofIsaObjects {
 		String returnedElement = gherkinSectionID.toLowerCase().replace(getObjectID(gherkinSectionID), "x").trim();
 		if(gherkinSectionID.toLowerCase().contains("."))
 			returnedElement = gherkinSectionID.split("\\.")[1].trim();
-		return returnedElement;
+		return returnedElement;	
 	}
 
 }
