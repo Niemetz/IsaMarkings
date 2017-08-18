@@ -9,7 +9,7 @@ public class HomePage extends AmazonBasePageObject
 		public HomePage()
 		{
 			mapTable.clear();
-			mapTable.put("shop all deals".toLowerCase(),"#a-autoid-0-announce");
+			mapTable.put("shop all deals".toLowerCase(),"#a-autoid-0-announce ");
 
 			mapTable.put("Page Unique Element".toLowerCase(), "#a-autoid-0-announce");
 		}
