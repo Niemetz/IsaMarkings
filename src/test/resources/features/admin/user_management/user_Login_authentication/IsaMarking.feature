@@ -10,7 +10,7 @@ Scenario: Amazon User Login Authentication
     Given user navigates to Amazon "Home" website
     Then user lands on the "New Indicator" page
     
-    # DONE
+    # DONE  Can I see this????
     ####################################
     # Note: Which main ISA Markings section the user is at?
     #Given user is at the "Indicator.Main" section 
@@ -27,7 +27,7 @@ Scenario: Amazon User Login Authentication
     #Given user is at the "ISA Markings for Description field.Policies" section
                   
     # DONE
-    ####################################
+    #####################################
     # Note: Which ISA Markings section user <lands on|should see> ?
     # Then user lands on the "ISA Markings for Indicator" section
     # Then user lands on the "ISA Markings for Indicator.Policies" section
