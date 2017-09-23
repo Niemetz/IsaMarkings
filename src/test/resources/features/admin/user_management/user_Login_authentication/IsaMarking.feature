@@ -10,7 +10,7 @@ Scenario: Amazon User Login Authentication
     Given user navigates to Amazon "Home" website
     Then user lands on the "New Indicator" page
     
-    # DONE should see in Remote Master
+    # DONE
     ####################################
     # Note: Which main ISA Markings section the user is at?
     #Given user is at the "Indicator.Main" section 
